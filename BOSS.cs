@@ -23,11 +23,18 @@ using KSP.IO;
 public class BOSS : MonoBehaviour
 {
     public Vessel activeVessel;
-    protected Rect windowPos, helpWindowPos;
+    protected Rect helpWindowPos, BurstPos;
     private string kspDir = KSPUtil.ApplicationRootPath + @"GameData/BOSS/PluginData/BOSS/";
-    public int screenshotCount, superSampleValueInt = 1, i;
-    public string superSampleValueString = "1", screenshotKey = "z", showGUIKey = "p";
-    public bool showHelp = false, burstMode = false, showGUI = false;
+    public int screenshotCount, superSampleValueInt = 1, burstTime = 1;
+    private double burstInterval = 1;
+
+    public string superSampleValueString = "1",
+                  burstTimeString = "1",
+                  burstIntervalString = "1",
+                  screenshotKey = "z",
+                  showGUIKey = "p";
+
+    public bool showHelp = false, burstMode = false, showGUI = false, showBurst = false;
     private IButton toolbarButton;
     public BOSSSettings BOSSsettings = new BOSSSettings();
 
@@ -56,20 +63,27 @@ public class BOSS : MonoBehaviour
         toolbarButton.TexturePath = showHelp ? "BOSS/bon" : "BOSS/boff";
         toolbarButton.ToolTip = "Toggle Bolt-On Screenshot System";
         toolbarButton.OnClick += (e) =>
-        {
-            if (showHelp) showHelp = false;
-            else if (!showHelp) showHelp = true;
-            toolbarButton.TexturePath = showHelp ? "BOSS/bon" : "BOSS/boff";
-            saveSettings();
-        };
+            {
+                if (showHelp) showHelp = false;
+                else if (!showHelp) showHelp = true;
+                toolbarButton.TexturePath = showHelp ? "BOSS/bon" : "BOSS/boff";
+                saveSettings();
+            };
     }
 
     private void drawGUI()
     {
         GUI.skin = HighLogic.Skin;
         if (showHelp)
+        {
             helpWindowPos = GUILayout.Window(568, helpWindowPos, UIContent, "B.O.S.S. Control", GUILayout.Width(150),
-                GUILayout.Height(150));
+                                             GUILayout.Height(150));
+        }
+        if (burstMode)
+        {
+            BurstPos = GUILayout.Window(569, BurstPos, UIContentBurst, "Burst Control", GUILayout.Width(150),
+                                        GUILayout.Height(150));
+        }
     }
 
     public void Update()
@@ -88,6 +102,32 @@ public class BOSS : MonoBehaviour
         }
     }
 
+    private void UIContentBurst(int windowID)
+    {
+        GUILayout.BeginVertical();
+
+        GUILayout.Label("Set interval in secs: " + burstInterval.ToString(), GUILayout.ExpandHeight(true),
+                        GUILayout.ExpandWidth(true));
+        if (!double.TryParse(burstIntervalString, out burstInterval))
+        {
+            burstIntervalString = " ";
+        }
+        burstIntervalString = GUILayout.TextField(burstIntervalString);
+
+
+        GUILayout.Label("Set time in secs: " + burstTime.ToString(), GUILayout.ExpandHeight(true),
+                        GUILayout.ExpandWidth(true));
+        if (!int.TryParse(burstTimeString, out burstTime))
+        {
+            superSampleValueString = " ";
+        }
+        burstTimeString = GUILayout.TextField(burstTimeString);
+
+
+        GUILayout.EndVertical();
+        GUI.DragWindow(new Rect(0, 0, 10000, 20));
+    }
+
     private void UIContent(int windowID)
     {
         GUIStyle mainGUI = new GUIStyle(GUI.skin.button);
@@ -101,7 +141,7 @@ public class BOSS : MonoBehaviour
         GUILayout.BeginVertical();
 
         GUILayout.Label("Current supersample value: " + superSampleValueInt.ToString(), GUILayout.ExpandHeight(true),
-            GUILayout.ExpandWidth(true));
+                        GUILayout.ExpandWidth(true));
         GUILayout.Label("Current take ss key: ", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
         screenshotKey = GUILayout.TextField(screenshotKey);
         GUILayout.Label("Supersample value: ");
@@ -118,7 +158,7 @@ public class BOSS : MonoBehaviour
         {
             if (burstMode)
             {
-                //burstModeMethod();
+               print("burst mode shot"); //burstModeMethod();
             }
             else
             {
@@ -135,7 +175,8 @@ public class BOSS : MonoBehaviour
 
     public void takeScreenshot()
     {
-        string screenshotFilename = "SS_" + DateTime.Today.ToString("MM-dd-yyyy") + "_" + DateTime.Now.ToString("HH-mm-ss");
+        string screenshotFilename = "SS_" + DateTime.Today.ToString("MM-dd-yyyy") + "_" +
+                                    DateTime.Now.ToString("HH-mm-ss");
         print("Screenshot Count:" + screenshotCount);
         print(kspDir + screenshotFilename + ".png");
         print("Your supersample value was " + superSampleValueInt + "!");
@@ -147,15 +188,18 @@ public class BOSS : MonoBehaviour
     private void createSettings()
     {
         BOSSsettings.SetValue("BOSS::screenshotCount", "0");
-        BOSSsettings.SetValue("BOSS::windowPos.x", "250");
-        BOSSsettings.SetValue("BOSS::windowPos.y", "250");
+        BOSSsettings.SetValue("BOSS::BurstPos.x", "250");
+        BOSSsettings.SetValue("BOSS::BurstPos.y", "250");
         BOSSsettings.SetValue("BOSS::helpWindowPos.x", "400");
         BOSSsettings.SetValue("BOSS::helpWindowPos.y", "400");
         BOSSsettings.SetValue("BOSS::showHelp", "True");
         BOSSsettings.SetValue("BOSS::showGUI", "True");
         BOSSsettings.SetValue("BOSS::screenshotKey", "z");
         BOSSsettings.SetValue("BOSS::showGUIKey", "p");
-        BOSSsettings.SetValue("BOSS::supersampValue","1");
+        BOSSsettings.SetValue("BOSS::supersampValue", "1");
+        BOSSsettings.SetValue("BOSS::burstTime", "1");
+        BOSSsettings.SetValue("BOSS::burstInterval", "1");
+        BOSSsettings.SetValue("BOSS::showBurst", "0");
         BOSSsettings.Save();
         print("Created BOSS settings.");
     }
@@ -163,8 +207,8 @@ public class BOSS : MonoBehaviour
     private void saveSettings()
     {
         BOSSsettings.SetValue("BOSS::screenshotCount", screenshotCount.ToString());
-        BOSSsettings.SetValue("BOSS::windowPos.x", windowPos.x.ToString());
-        BOSSsettings.SetValue("BOSS::windowPos.y", windowPos.y.ToString());
+        BOSSsettings.SetValue("BOSS::windowPos.x", BurstPos.x.ToString());
+        BOSSsettings.SetValue("BOSS::windowPos.y", BurstPos.y.ToString());
         BOSSsettings.SetValue("BOSS::helpWindowPos.x", helpWindowPos.x.ToString());
         BOSSsettings.SetValue("BOSS::helpWindowPos.y", helpWindowPos.y.ToString());
         BOSSsettings.SetValue("BOSS::showHelp", showHelp.ToString());
@@ -172,6 +216,9 @@ public class BOSS : MonoBehaviour
         BOSSsettings.SetValue("BOSS::screenshotKey", screenshotKey);
         BOSSsettings.SetValue("BOSS::showGUIKey", showGUIKey);
         BOSSsettings.SetValue("BOSS::supersampValue", superSampleValueString);
+        BOSSsettings.SetValue("BOSS::burstTime", burstTime.ToString());
+        BOSSsettings.SetValue("BOSS::burstInterval", burstInterval.ToString());
+        BOSSsettings.SetValue("BOSS::showBurst", burstMode.ToString());
         BOSSsettings.Save();
         print("Saved BOSS settings.");
     }
@@ -179,8 +226,8 @@ public class BOSS : MonoBehaviour
     private void loadSettings()
     {
         BOSSsettings.Load();
-        windowPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::windowPos.x"));
-        windowPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSS::windowPos.y"));
+        BurstPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::BurstPos.x"));
+        BurstPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSS::BurstPos.y"));
         helpWindowPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::helpWindowPos.x"));
         helpWindowPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSS::helpWindowPos.y"));
         screenshotCount = Convert.ToInt32(BOSSsettings.GetValue("BOSS::screenshotCount"));
@@ -189,6 +236,9 @@ public class BOSS : MonoBehaviour
         screenshotKey = (BOSSsettings.GetValue("BOSS::screenshotKey"));
         showGUIKey = (BOSSsettings.GetValue("BOSS::showGUIKey"));
         superSampleValueString = (BOSSsettings.GetValue("BOSS::supersampValue"));
+        burstTime = Convert.ToInt32(BOSSsettings.GetValue("BOSS::burstTime"));
+        burstInterval = Convert.ToDouble(BOSSsettings.GetValue("BOSS::burstInterval"));
+        burstMode = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showBurst"));
         print("Loaded BOSS settings.");
     }
 }
