@@ -199,7 +199,7 @@ public class BOSS : MonoBehaviour
         BOSSsettings.SetValue("BOSS::supersampValue", "1");
         BOSSsettings.SetValue("BOSS::burstTime", "1");
         BOSSsettings.SetValue("BOSS::burstInterval", "1");
-        BOSSsettings.SetValue("BOSS::showBurst", "0");
+        BOSSsettings.SetValue("BOSS::showBurst", "False");
         BOSSsettings.Save();
         print("Created BOSS settings.");
     }
