@@ -1,0 +1,14 @@
+c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\BOSS.dll
+c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\BOSS.pdb
+c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Assembly-CSharp.dll
+c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Assembly-UnityScript.dll
+c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Toolbar.dll
+c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\UnityEngine.dll
+c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Mono.Cecil.dll
+c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Assembly-CSharp-firstpass.dll
+c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\TDx.TDxInput.dll
+c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Boo.Lang.dll
+c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\UnityScript.Lang.dll
+c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Mono.Security.dll
+c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.dll
+c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.pdb
