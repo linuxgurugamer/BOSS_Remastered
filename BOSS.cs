@@ -15,6 +15,7 @@ along with The Bolt-On Screenshot System.  If not, see <http://www.gnu.org/licen
 
 
 using System;
+using System.Threading;
 using Toolbar;
 using UnityEngine;
 using KSP.IO;
@@ -90,14 +91,26 @@ public class BOSS : MonoBehaviour
     {
         if (Input.GetKeyDown(screenshotKey))
         {
-            print("Screenshot button pressed!");
-            takeScreenshot();
+            if (burstMode)
+            {
+                saveSettings();
+                loadSettings();
+                print("burst mode start");
+                fireBurstShot();
+
+            }
+            else
+            {
+                saveSettings();
+                loadSettings();
+                print("Screenshot button pressed!");
+                takeScreenshot();
+            }
         }
         if (Input.GetKeyDown(showGUIKey))
         {
             if (showHelp) showHelp = false;
             else if (!showHelp) showHelp = true;
-            saveSettings();
             toolbarButton.TexturePath = showHelp ? "BOSS/bon" : "BOSS/boff";
         }
     }
@@ -158,16 +171,20 @@ public class BOSS : MonoBehaviour
         {
             if (burstMode)
             {
-               print("burst mode shot"); //burstModeMethod();
+                saveSettings();
+                loadSettings();
+                print("burst mode shot");
+                fireBurstShot();
             }
             else
             {
+                saveSettings();
+                loadSettings();
                 print("Screenshot button pressed!");
                 takeScreenshot();
             }
         }
-        GUILayout.Label("Toggle Burst: ");
-        burstMode = GUILayout.Toggle(burstMode, "+", GUILayout.ExpandWidth(true));
+        burstMode = GUILayout.Toggle(burstMode, "Toggle Burst", GUILayout.ExpandWidth(true));
         GUILayout.Label(screenshotCount + " screenshots taken.");
         GUILayout.EndVertical();
         GUI.DragWindow(new Rect(0, 0, 10000, 20));
@@ -183,6 +200,18 @@ public class BOSS : MonoBehaviour
         Application.CaptureScreenshot(kspDir + screenshotFilename + ".png", superSampleValueInt);
         screenshotCount++;
         saveSettings();
+    }
+
+    public void fireBurstShot()
+    {
+        int bursts = burstTime;
+        int interval = burstInterval*1000;
+        while (bursts > 0)
+        {
+            takeScreenshot();
+            Thread.Sleep(interval);
+            bursts--;
+        }
     }
 
     private void createSettings()
