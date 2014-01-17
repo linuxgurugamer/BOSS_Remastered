@@ -34,7 +34,7 @@ public class BOSS : MonoBehaviour
                   screenshotKey = "z",
                   showGUIKey = "p";
 
-    public bool showHelp = false, burstMode = false, showGUI = false, showBurst = false;
+    public bool showHelp = false, burstMode = false, showBurst = false;
     private IButton toolbarButton;
     public BOSSSettings BOSSsettings = new BOSSSettings();
 
@@ -187,13 +187,13 @@ public class BOSS : MonoBehaviour
 
     private void createSettings()
     {
-        BOSSsettings.SetValue("BOSS::screenshotCount", "0");
+        
         BOSSsettings.SetValue("BOSS::BurstPos.x", "250");
         BOSSsettings.SetValue("BOSS::BurstPos.y", "250");
         BOSSsettings.SetValue("BOSS::helpWindowPos.x", "400");
         BOSSsettings.SetValue("BOSS::helpWindowPos.y", "400");
+        BOSSsettings.SetValue("BOSS::screenshotCount", "0");
         BOSSsettings.SetValue("BOSS::showHelp", "True");
-        BOSSsettings.SetValue("BOSS::showGUI", "True");
         BOSSsettings.SetValue("BOSS::screenshotKey", "z");
         BOSSsettings.SetValue("BOSS::showGUIKey", "p");
         BOSSsettings.SetValue("BOSS::supersampValue", "1");
@@ -206,13 +206,13 @@ public class BOSS : MonoBehaviour
 
     private void saveSettings()
     {
-        BOSSsettings.SetValue("BOSS::screenshotCount", screenshotCount.ToString());
-        BOSSsettings.SetValue("BOSS::windowPos.x", BurstPos.x.ToString());
-        BOSSsettings.SetValue("BOSS::windowPos.y", BurstPos.y.ToString());
+       
+        BOSSsettings.SetValue("BOSS::BurstPos.x", BurstPos.x.ToString());
+        BOSSsettings.SetValue("BOSS::BurstPos.y", BurstPos.y.ToString());
         BOSSsettings.SetValue("BOSS::helpWindowPos.x", helpWindowPos.x.ToString());
         BOSSsettings.SetValue("BOSS::helpWindowPos.y", helpWindowPos.y.ToString());
+        BOSSsettings.SetValue("BOSS::screenshotCount", screenshotCount.ToString());
         BOSSsettings.SetValue("BOSS::showHelp", showHelp.ToString());
-        BOSSsettings.SetValue("BOSS::showGUI", showGUI.ToString());
         BOSSsettings.SetValue("BOSS::screenshotKey", screenshotKey);
         BOSSsettings.SetValue("BOSS::showGUIKey", showGUIKey);
         BOSSsettings.SetValue("BOSS::supersampValue", superSampleValueString);
@@ -232,7 +232,6 @@ public class BOSS : MonoBehaviour
         helpWindowPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSS::helpWindowPos.y"));
         screenshotCount = Convert.ToInt32(BOSSsettings.GetValue("BOSS::screenshotCount"));
         showHelp = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showHelp"));
-        showGUI = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showGUI"));
         screenshotKey = (BOSSsettings.GetValue("BOSS::screenshotKey"));
         showGUIKey = (BOSSsettings.GetValue("BOSS::showGUIKey"));
         superSampleValueString = (BOSSsettings.GetValue("BOSS::supersampValue"));
