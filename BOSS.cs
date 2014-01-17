@@ -52,7 +52,7 @@ public class BOSS : MonoBehaviour
 
     private void initToolbar()
     {
-        toolbarButton = ToolbarManager.Instance.add("BOSS", "button1");
+        toolbarButton = ToolbarManager.Instance.add("BOSS", "toolbarButton");
         toolbarButton.TexturePath = showHelp ? "BOSS/bon" : "BOSS/boff";
         toolbarButton.ToolTip = "Toggle Bolt-On Screenshot System";
         toolbarButton.OnClick += (e) =>
@@ -99,6 +99,7 @@ public class BOSS : MonoBehaviour
         mainGUI.padding = new RectOffset(8, 8, 8, 8);
 
         GUILayout.BeginVertical();
+
         GUILayout.Label("Current supersample value: " + superSampleValueInt.ToString(), GUILayout.ExpandHeight(true),
             GUILayout.ExpandWidth(true));
         GUILayout.Label("Current take ss key: ", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
@@ -110,6 +111,7 @@ public class BOSS : MonoBehaviour
             superSampleValueString = " ";
         }
         superSampleValueString = GUILayout.TextField(superSampleValueString);
+
 
         if (GUILayout.Button("Take Screenshot", mainGUI, GUILayout.Width(125)))
             //GUILayout.Button is "true" when clicked
@@ -124,6 +126,8 @@ public class BOSS : MonoBehaviour
                 takeScreenshot();
             }
         }
+        GUILayout.Label("Toggle Burst: ");
+        burstMode = GUILayout.Toggle(burstMode, "+", GUILayout.ExpandWidth(true));
         GUILayout.Label(screenshotCount + " screenshots taken.");
         GUILayout.EndVertical();
         GUI.DragWindow(new Rect(0, 0, 10000, 20));
