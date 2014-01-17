@@ -167,6 +167,7 @@ public class BOSS : MonoBehaviour
         BOSSsettings.SetValue("BOSS::showGUI", showGUI.ToString());
         BOSSsettings.SetValue("BOSS::screenshotKey", screenshotKey);
         BOSSsettings.SetValue("BOSS::showGUIKey", showGUIKey);
+        BOSSsettings.SetValue("BOSS::supersampValue", superSampleValueString);
         BOSSsettings.Save();
         print("Saved BOSS settings.");
     }
@@ -183,6 +184,7 @@ public class BOSS : MonoBehaviour
         showGUI = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showGUI"));
         screenshotKey = (BOSSsettings.GetValue("BOSS::screenshotKey"));
         showGUIKey = (BOSSsettings.GetValue("BOSS::showGUIKey"));
+        superSampleValueString = (BOSSsettings.GetValue("BOSS::supersampValue"));
         print("Loaded BOSS settings.");
     }
 }
