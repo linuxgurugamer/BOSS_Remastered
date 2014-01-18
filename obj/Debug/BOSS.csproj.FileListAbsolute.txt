@@ -12,3 +12,5 @@ c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\UnitySc
 c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Mono.Security.dll
 c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.dll
 c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.pdb
+C:\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program\GameData\BOSS\BOSS.dll
+C:\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program\GameData\BOSS\BOSS.pdb

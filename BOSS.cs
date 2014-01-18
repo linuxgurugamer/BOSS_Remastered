@@ -15,6 +15,7 @@ along with The Bolt-On Screenshot System.  If not, see <http://www.gnu.org/licen
 
 
 using System;
+using System.ComponentModel;
 using System.Threading;
 using Toolbar;
 using UnityEngine;
@@ -132,7 +133,7 @@ public class BOSS : MonoBehaviour
                         GUILayout.ExpandWidth(true));
         if (!int.TryParse(burstTimeString, out burstTime))
         {
-            superSampleValueString = " ";
+            burstTimeString = " ";
         }
         burstTimeString = GUILayout.TextField(burstTimeString);
 
@@ -205,13 +206,34 @@ public class BOSS : MonoBehaviour
     public void fireBurstShot()
     {
         int bursts = burstTime;
-        int interval = burstInterval*1000;
-        while (bursts > 0)
+        int interval = Convert.ToInt32(burstInterval*1000);
+     BackgroundWorker bw = new BackgroundWorker();
+
+        // this allows our worker to report progress during work
+        bw.WorkerReportsProgress = true;
+        // what to do in the background thread
+        bw.DoWork += new DoWorkEventHandler(
+        delegate(object o, DoWorkEventArgs args)
         {
-            takeScreenshot();
-            Thread.Sleep(interval);
-            bursts--;
-        }
+            BackgroundWorker b = o as BackgroundWorker;
+
+            // do some simple processing for 10 seconds
+            for (; bursts > 0; bursts--)
+            {
+                takeScreenshot();
+                Thread.Sleep(interval);
+            }
+
+        });
+
+        // what to do when worker completes its task (notify the user)
+        bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
+        delegate(object o, RunWorkerCompletedEventArgs args)
+        {
+            burstMode = !burstMode;
+        });
+
+        bw.RunWorkerAsync();
     }
 
     private void createSettings()
