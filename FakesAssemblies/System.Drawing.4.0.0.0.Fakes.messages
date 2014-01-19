@@ -1,0 +1,222 @@
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Image: type has no family visible contructors.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Bitmap: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Brushes: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.BufferedGraphics: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.BufferedGraphicsContext: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.BufferedGraphicsManager: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Color: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.ContentAlignment: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.CopyPixelOperation: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.DashCap: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Graphics: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Icon: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.ImageAnimator: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.KnownColor: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Pen: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Pens: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Point: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Rectangle: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Region: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.RotateFlipType: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Size: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.SolidBrush: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.SystemBrushes: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.SystemColors: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.SystemFonts: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.SystemIcons: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.SystemPens: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.AdjustableArrowCap: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.BitmapData: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.Blend: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.ColorAdjustType: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.ColorBlend: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.ColorChannelFlag: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.ColorMap: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.ColorMapType: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.ColorMatrix: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.ColorMatrixFlag: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.ColorMode: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.ColorPalette: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.ColorTranslator: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.CombineMode: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.CompositingMode: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.CompositingQuality: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.CoordinateSpace: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.DashStyle: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.EmfPlusRecordType: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.EmfType: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.Encoder: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.EncoderParameter: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.EncoderParameters: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.EncoderParameterValueType: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.EncoderValue: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.FillMode: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.FlushIntention: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Font: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Text.FontCollection: type has no family visible contructors.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.FontFamily: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.FontStyle: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.FrameDimension: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Text.GenericFontFamilies: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.GraphicsContainer: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.GraphicsPath: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.GraphicsPathIterator: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.GraphicsState: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.HatchBrush: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.HatchStyle: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Text.HotkeyPrefix: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.ImageAttributes: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.ImageCodecFlags: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.ImageCodecInfo: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.ImageFlags: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.ImageFormat: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.ImageLockMode: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Text.InstalledFontCollection: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.InterpolationMode: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.LinearGradientBrush: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.LinearGradientMode: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.LineCap: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.LineJoin: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.Matrix: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.MatrixOrder: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.Metafile: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.MetafileFrameUnit: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.MetafileHeader: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.MetafileType: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.MetaHeader: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.PaletteFlags: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.PathData: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.PathGradientBrush: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.PathPointType: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.PenAlignment: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.PenType: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.PixelFormat: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.PixelOffsetMode: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.PlayRecordCallback: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.PointF: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Text.PrivateFontCollection: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.PropertyItem: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.QualityMode: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.RectangleF: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.RegionData: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.SizeF: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.SmoothingMode: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.StringAlignment: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.StringDigitSubstitute: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.CharacterRange: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.StringFormat: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.StringFormatFlags: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.StringTrimming: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.StringUnit: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Text.TextRenderingHint: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.TextureBrush: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.GraphicsUnit: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.WarpMode: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Imaging.WmfPlaceableFileHeader: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Drawing2D.WrapMode: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Configuration.SystemDrawingSection: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Design.CategoryNameCollection: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Design.PropertyValueUIHandler: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Design.PropertyValueUIItemInvokeHandler: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Design.ToolboxComponentsCreatedEventHandler: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Design.ToolboxComponentsCreatingEventHandler: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Design.ToolboxItemCollection: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Design.ToolboxItemCreatorCallback: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Design.UITypeEditorEditStyle: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Printing.Duplex: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Printing.PaperKind: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Printing.PaperSourceKind: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Printing.PreviewPageInfo: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Printing.PrintAction: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Printing.PrinterResolutionKind: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Printing.PrinterUnit: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Printing.PrinterUnitConvert: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Printing.PrintEventHandler: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Printing.PrintingPermission: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Printing.PrintingPermissionAttribute: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Printing.PrintingPermissionLevel: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Printing.PrintPageEventHandler: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Printing.PrintRange: type is a value type.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.Printing.QueryPageSettingsEventHandler: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for System.Drawing.SRDescriptionAttribute: type is sealed.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate stub for <PrivateImplementationDetails>{AE5EBB97-C7A7-4B1A-B02C-BAB4D654C7A1}: type is not supported because of internal limitations.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.IDeviceContext: type is an interface.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Image+GetThumbnailImageAbort: type is a delegate.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.ContentAlignment: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.CopyPixelOperation: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.DashCap: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Graphics+DrawImageAbort: type is a delegate.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Graphics+EnumerateMetafileProc: type is a delegate.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.KnownColor: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.RotateFlipType: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.ColorAdjustType: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.ColorChannelFlag: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.ColorMapType: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.ColorMatrixFlag: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.ColorMode: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.CombineMode: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.CompositingMode: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.CompositingQuality: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.CoordinateSpace: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.DashStyle: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.EmfPlusRecordType: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.EmfType: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.EncoderParameterValueType: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.EncoderValue: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.FillMode: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.FlushIntention: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.FontStyle: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Text.GenericFontFamilies: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.HatchStyle: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Text.HotkeyPrefix: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.ImageCodecFlags: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.ImageFlags: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.ImageLockMode: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.InterpolationMode: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.LinearGradientMode: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.LineCap: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.LineJoin: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.MatrixOrder: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.MetafileFrameUnit: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.MetafileType: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.PaletteFlags: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.PathPointType: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.PenAlignment: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.PenType: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.PixelFormat: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.PixelOffsetMode: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Imaging.PlayRecordCallback: type is a delegate.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.QualityMode: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.SmoothingMode: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.StringAlignment: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.StringDigitSubstitute: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.StringFormatFlags: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.StringTrimming: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.StringUnit: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Text.TextRenderingHint: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.GraphicsUnit: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.WarpMode: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Drawing2D.WrapMode: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Design.IPropertyValueUIService: type is an interface.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Design.IToolboxItemProvider: type is an interface.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Design.IToolboxService: type is an interface.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Design.IToolboxUser: type is an interface.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Design.PropertyValueUIHandler: type is a delegate.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Design.PropertyValueUIItemInvokeHandler: type is a delegate.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Design.ToolboxComponentsCreatedEventHandler: type is a delegate.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Design.ToolboxComponentsCreatingEventHandler: type is a delegate.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Design.ToolboxItemCreatorCallback: type is a delegate.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Design.UITypeEditorEditStyle: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Printing.Duplex: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Printing.PaperKind: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Printing.PaperSourceKind: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Printing.PrintAction: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Printing.PrinterResolutionKind: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Printing.PrinterUnit: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Printing.PrintEventHandler: type is a delegate.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Printing.PrintingPermissionLevel: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Printing.PrintPageEventHandler: type is a delegate.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Printing.PrintRange: type is an enum.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.Printing.QueryPageSettingsEventHandler: type is a delegate.
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for System.Drawing.SRDescriptionAttribute: type is not visible to exported or assembly(System.Drawing.4.0.0.0.Fakes).
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Fakes\System.Drawing.fakes : warning : Cannot generate shim for <PrivateImplementationDetails>{AE5EBB97-C7A7-4B1A-B02C-BAB4D654C7A1}: type is not supported because of internal limitations.

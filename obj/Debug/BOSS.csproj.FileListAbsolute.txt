@@ -10,7 +10,11 @@ c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\TDx.TDx
 c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Boo.Lang.dll
 c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\UnityScript.Lang.dll
 c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Mono.Security.dll
-c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.dll
-c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.pdb
 C:\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program\GameData\BOSS\BOSS.dll
 C:\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program\GameData\BOSS\BOSS.pdb
+C:\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program2\GameData\BOSS\BOSS.dll
+C:\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program2\GameData\BOSS\readme.txt
+C:\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program2\GameData\BOSS\BOSS.pdb
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.csprojResolveAssemblyReference.cache
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.dll
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.pdb

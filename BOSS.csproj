@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\..\..\..\Program Files %28x86%29\Steam\SteamApps\common\Kerbal Space Program\GameData\BOSS\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\..\Program Files %28x86%29\Steam\SteamApps\common\Kerbal Space Program2\GameData\BOSS\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -40,6 +40,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,14 +59,58 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BOSS.cs" />
     <Compile Include="pluginSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="readme.txt" />
+    <Content Include="readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AntiAliaser\AntiAliaser.csproj">
+      <Project>{9d711cd3-1dc5-49f5-912d-c41b98b984f3}</Project>
+      <Name>AntiAliaser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConsoleApplication1\Test Aliaser.csproj">
+      <Project>{ac65d127-5850-4afb-b4b2-77141c9d90e9}</Project>
+      <Name>Test Aliaser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SkiptoRocket\SkiptoRocket.csproj">
+      <Project>{015713c9-e7f5-4e2e-a45c-cf18de22e7a3}</Project>
+      <Name>SkiptoRocket</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BOSS.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>rem Set the Variables we need
+echo Finding KSP
+if exist "C:\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program2\KSP.exe" (
+	set GAMEPATH="C:\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program2"
+)else (
+	echo "Cant find KSP"
+	exit 1
+)
+
+echo Gamepath: %25GAMEPATH%25
+set DestPath="%25GAMEPATH%25\GameData\BOSS"
+set Binary="%25GAMEPATH%25\KSP.exe"
+
+if not $(ConfigurationName)==Debug goto END
+:DEBUGCONFIG
+rem Copy DLL and run KSP
+copy "$(TargetPath)" "%25DestPath%25"
+rem and then run the game
+"%25Binary%25"
+goto END
+
+:END</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
