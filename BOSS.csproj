@@ -106,6 +106,7 @@ set Binary="%25GAMEPATH%25\KSP.exe"
 if not $(ConfigurationName)==Debug goto END
 :DEBUGCONFIG
 rem Copy DLL and run KSP
+copy "$(ProjectDir)readme.txt" "%25DestPath%25"
 copy "$(TargetPath)" "%25DestPath%25"
 rem and then run the game
 "%25Binary%25"

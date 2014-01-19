@@ -32,6 +32,7 @@ using File = KSP.IO.File;
 [KSPAddon(KSPAddon.Startup.EveryScene, false)]
 public class BOSS : MonoBehaviour
 {
+    //Using this method to get the boss folder gives you a cleaner path to it. As the KSPUtils class gets paths that like this C:\KSP_Root\ksp_data\..\
     private readonly string BossFldr = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\";
 
     private readonly string kspPluginDataFldr =
@@ -43,7 +44,7 @@ public class BOSS : MonoBehaviour
     public Vector2 scrollPosition;
     public int screenshotCount, burstTime = 1, superSampleValueInt = 1;
     private double burstInterval = 1;
-    public bool burstMode = false, showBurst = false, showHelp = true, showUI = true, unitySkin = true;
+    public bool showBurst = false, showHelp = true, showUI = true, unitySkin = true;
 
     public string burstTimeString = "1",
         helpContent = "",
@@ -67,6 +68,7 @@ public class BOSS : MonoBehaviour
                 throw new AccessViolationException("Can't create settings file, please confirm directory is writeable.");
             }
         }
+        //Currently reading the readme for the help window. Think I may change this so that it doesnt go missing.
         if (!File.Exists<BOSS>(BossFldr + "readme.txt"))
             try
             {
@@ -112,51 +114,45 @@ public class BOSS : MonoBehaviour
             helpWindowPos = GUILayout.Window(570, helpWindowPos, UIContentHelp, "Help!!!", GUILayout.Width(400),
                 GUILayout.Height(400));
 
-        if (burstMode)
+        if (showBurst)
             BurstPos = GUILayout.Window(569, BurstPos, UIContentBurst, "Burst Control", GUILayout.Width(150),
                 GUILayout.Height(150));
     }
 
     public void Update()
     {
-        if (burstMode)
+        if (showBurst) //Set sampling to one always whenver burst mode is on to prevent crashing.
         {
             superSampleValueInt = 1;
             superSampleValueString = "1";
         }
-
         try
         {
             if (Input.GetKeyDown(screenshotKey))
             {
-                if (burstMode)
+                if (showBurst)
                 {
-                    saveSettings();
-                    loadSettings();
                     print("burst mode start");
                     fireBurstShot();
                 }
                 else
                 {
-                    saveSettings();
-                    loadSettings();
                     print("Screenshot button pressed!");
                     takeScreenshot();
                 }
             }
             if (Input.GetKeyDown(showGUIKey))
             {
-                if (showUI) showUI = false;
-                else if (!showUI) showUI = true;
+                    showUI = !showUI;
+                    showHelp = !showHelp;
+                    showBurst = !showBurst;
                 toolbarButton.TexturePath = showUI ? "BOSS/bon" : "BOSS/boff";
             }
         }
         catch (UnityException e)
+            //Catches the unity exception for a keycode that isnt a valid key. Updating the UI to let the user know.
         {
-            if (screenshotKey != "invalid" || screenshotKey != "")
-            {
-                screenshotKey = "invalid";
-            }
+            if (screenshotKey != "invalid" || screenshotKey != "") screenshotKey = "invalid";
         }
     }
 
@@ -166,21 +162,15 @@ public class BOSS : MonoBehaviour
 
         GUILayout.Label("Set interval in secs: " + burstInterval, GUILayout.ExpandHeight(true),
             GUILayout.ExpandWidth(true));
-        if (!double.TryParse(burstIntervalString, out burstInterval))
-        {
-            burstIntervalString = " ";
-        }
-        burstIntervalString = GUILayout.TextField(burstIntervalString);
+        if (!double.TryParse(burstIntervalString, out burstInterval)) burstIntervalString = " ";
 
+        burstIntervalString = GUILayout.TextField(burstIntervalString);
 
         GUILayout.Label("Set time in secs: " + burstTime, GUILayout.ExpandHeight(true),
             GUILayout.ExpandWidth(true));
-        if (!int.TryParse(burstTimeString, out burstTime))
-        {
-            burstTimeString = " ";
-        }
-        burstTimeString = GUILayout.TextField(burstTimeString);
+        if (!int.TryParse(burstTimeString, out burstTime)) burstTimeString = " ";
 
+        burstTimeString = GUILayout.TextField(burstTimeString);
 
         GUILayout.EndVertical();
         GUI.DragWindow(new Rect(0, 0, 10000, 20));
@@ -191,6 +181,14 @@ public class BOSS : MonoBehaviour
         scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(395), GUILayout.Height(395));
         GUILayout.Label(helpContent);
         GUILayout.EndScrollView();
+
+        GUILayout.BeginVertical();
+
+        GUILayout.Space(8);
+        if (unitySkin) unitySkin = GUILayout.Toggle(unitySkin, "Toggle ksp skin", GUILayout.ExpandWidth(true));
+        else unitySkin = GUILayout.Toggle(unitySkin, "Toggle unity skin", GUILayout.ExpandWidth(true));
+
+        GUILayout.EndVertical();
         GUI.DragWindow(new Rect(0, 0, 10000, 20));
     }
 
@@ -205,22 +203,19 @@ public class BOSS : MonoBehaviour
         mainGUI.padding = new RectOffset(8, 8, 8, 8);
 
         GUILayout.BeginVertical();
+
         GUILayout.Label("Current take ss key: ", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
         screenshotKey = GUILayout.TextField(screenshotKey);
         GUILayout.Label("Supersample value: ");
 
-        if (!int.TryParse(superSampleValueString, out superSampleValueInt))
-        {
-            superSampleValueString = " ";
-        }
+        if (!int.TryParse(superSampleValueString, out superSampleValueInt)) superSampleValueString = " ";
+
         superSampleValueString = GUILayout.TextField(superSampleValueString);
 
         if (GUILayout.Button("Take Screenshot", mainGUI, GUILayout.Width(125)))
         {
-            if (burstMode)
+            if (showBurst)
             {
-                saveSettings();
-                loadSettings();
                 superSampleValueInt = 1;
                 superSampleValueString = "1";
 
@@ -229,17 +224,12 @@ public class BOSS : MonoBehaviour
             }
             else
             {
-                saveSettings();
-                loadSettings();
                 print("Screenshot button pressed!");
                 takeScreenshot();
             }
         }
-        burstMode = GUILayout.Toggle(burstMode, "Toggle Burst", GUILayout.ExpandWidth(true));
+        showBurst = GUILayout.Toggle(showBurst, "Toggle Burst", GUILayout.ExpandWidth(true));
         showHelp = GUILayout.Toggle(showHelp, "Toggle Help", GUILayout.ExpandWidth(true));
-        if (unitySkin) unitySkin = GUILayout.Toggle(unitySkin, "Toggle ksp skin", GUILayout.ExpandWidth(true));
-        else unitySkin = GUILayout.Toggle(unitySkin, "Toggle unity skin", GUILayout.ExpandWidth(true));
-
         GUILayout.Label(screenshotCount + " screenshots taken.");
         GUILayout.EndVertical();
         GUI.DragWindow(new Rect(0, 0, 10000, 20));
@@ -247,6 +237,8 @@ public class BOSS : MonoBehaviour
 
     public void takeScreenshot()
     {
+        saveSettings();
+        loadSettings();
         string screenshotFilename = "SS_" + DateTime.Today.ToString("MM-dd-yyyy") + "_" +
                                     DateTime.Now.ToString("HH-mm-ss");
         print("Screenshot Count:" + screenshotCount);
@@ -259,6 +251,7 @@ public class BOSS : MonoBehaviour
 
     public void fireBurstShot()
     {
+        //Sets up background worker for burst fire mode. Takes the screenshots in seperate thread from the UI thread.
         int bursts = burstTime;
         int interval = Convert.ToInt32(burstInterval*1000);
         var bw = new BackgroundWorker();
@@ -276,7 +269,7 @@ public class BOSS : MonoBehaviour
             }
         };
 
-        bw.RunWorkerCompleted += delegate { burstMode = !burstMode; };
+        bw.RunWorkerCompleted += delegate { showBurst = !showBurst; };
 
         bw.RunWorkerAsync();
     }
@@ -316,7 +309,7 @@ public class BOSS : MonoBehaviour
         BOSSsettings.SetValue("BOSS::supersampValue", superSampleValueString);
         BOSSsettings.SetValue("BOSS::burstTime", burstTime.ToString());
         BOSSsettings.SetValue("BOSS::burstInterval", burstInterval.ToString());
-        BOSSsettings.SetValue("BOSS::showBurst", burstMode.ToString());
+        BOSSsettings.SetValue("BOSS::showBurst", showBurst.ToString());
         BOSSsettings.Save();
         print("Saved BOSS settings.");
     }
@@ -337,7 +330,7 @@ public class BOSS : MonoBehaviour
         superSampleValueString = (BOSSsettings.GetValue("BOSS::supersampValue"));
         burstTime = Convert.ToInt32(BOSSsettings.GetValue("BOSS::burstTime"));
         burstInterval = Convert.ToDouble(BOSSsettings.GetValue("BOSS::burstInterval"));
-        burstMode = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showBurst"));
+        showBurst = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showBurst"));
         print("Loaded BOSS settings.");
     }
 }
