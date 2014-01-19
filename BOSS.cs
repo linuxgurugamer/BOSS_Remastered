@@ -205,8 +205,6 @@ public class BOSS : MonoBehaviour
         mainGUI.padding = new RectOffset(8, 8, 8, 8);
 
         GUILayout.BeginVertical();
-        GUILayout.Label("Current supersample value: " + superSampleValueInt, GUILayout.ExpandHeight(true),
-            GUILayout.ExpandWidth(true));
         GUILayout.Label("Current take ss key: ", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
         screenshotKey = GUILayout.TextField(screenshotKey);
         GUILayout.Label("Supersample value: ");
