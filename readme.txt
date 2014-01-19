@@ -7,13 +7,14 @@ Contributors - Ted/SyNik4l
 Last Update - 1/19/2014
 Contact: synik4l@gmail.com
 Forum Thread: http://forum.kerbalspaceprogram.com/threads/34631-0-23-Bolt-On-Screenshot-System-(BOSS)-v2-1-2
-
+Github Repo: https://github.com/SyNiK4L/BOSS
 
 Important
 Using this mod requires alot of ram. Thus burst fire mode is restricted to no supersampling. Although you can still use supersampling when not using burst fire.
-I recommend not going higher than 3 or 4. I also do not recommend pressing your screenshot button multiple times within 30 seconds of each other(while set on 3 or 4).
-Or you may crash your game. Currently there is nothing I can do about this. Its because of the ram limit of KSP. And how much ram it takes to super sample an image.
-Just leave your screenshots folder open.Then when you see the image pop up in there. You know you are okay to take another.
+I recommend not going higher than 3 or 4. You may be able to pull off 5. But it may crash/freeze your game for a second. if the game freezes. You are not missing any frames.
+So just let the game sit while it processes. Due to the KSP ram limit. I have added a limiter on the screenshot key/button, if your super sampling value is set higher than 1.
+This is to prevent multiple screenshots being taken too quickly causing you to go over the KSP ram limit, and crash your game. The plugin checks for the image to finish processing
+Then allows you to take more screenshots.
 
 Description
 This plugin allows you to take screenshots within KSP at a higher resolution than your current screen resolution, using a technique called 'supersampling'. 
@@ -21,16 +22,17 @@ Press 'z' to take a screenshot(default) and 'p' to hide the UI. The screenshots 
 
 
 Plans: 
-1. I'll add a check for the image file and disable the button in between. To prevent crashing when supersampling value is set high.
-2. I'm trying to figure out how to fix the problem with the supersampling killing all of KSP's memory. Thus crashing it. So i've written an external script to handle antialiasing(super sampling).
-	As it seems Unity does not like system.drawing because they expect all drawing to be done by directX and opengl. So I cannot call my script from KSP. I'm trying to figure out a way around this,
-	in a memory conservative way.
+Rebuild the whole thing in Trigger Au's framework. For cleaniness and fun.
+Recommendation are welcome.
 	
-
+Known Bugs: If you type an invalid key in the ss key field. It show invalid. If you try to delete invalid by pressing backspace it brings it back.
+Thus you have to highlight the text and press and valid key. I'm going to try to find a better way to not allow a bad key. But allow you to have control over the input box.
+As you normally should. Fix coming soon.
 
 Changelog
-v2.1.3 - Forked by SyNiK4L - added choosing of skins, burst shot mode, help window, cleaned up code. Added saving of supersampling value(be careful with this).
-added to toolbar(http://forum.kerbalspaceprogram.com/threads/60863-0-23-0-Toolbar-1-4-0-Common-API-for-draggable-resizable-buttons-toolbar). 
+v2.1.3 - Forked by SyNiK4L - added choosing of skins, burst shot mode, help window, cleaned up code ALOT. Added saving of supersampling value.
+added to toolbar(http://forum.kerbalspaceprogram.com/threads/60863-0-23-0-Toolbar-1-4-0-Common-API-for-draggable-resizable-buttons-toolbar).
+fixed crashing issue by limiting the user to 1 screenshot while the unity engine is still antialiasing the image.
 
 v2.1.2 - Fixed up the issues with hiding UI, made it persistent and changed it to the p key.
 v2.1.1 - Fixed an issue in the paths given to the screenshot method. Screenshots should actually save now...
