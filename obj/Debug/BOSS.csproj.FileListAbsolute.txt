@@ -1,20 +1,24 @@
-c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\BOSS.dll
-c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\BOSS.pdb
-c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Assembly-CSharp.dll
-c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Assembly-UnityScript.dll
-c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Toolbar.dll
-c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\UnityEngine.dll
-c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Mono.Cecil.dll
-c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Assembly-CSharp-firstpass.dll
-c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\TDx.TDxInput.dll
-c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Boo.Lang.dll
-c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\UnityScript.Lang.dll
-c:\users\corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Mono.Security.dll
 C:\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program\GameData\BOSS\BOSS.dll
 C:\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program\GameData\BOSS\BOSS.pdb
 C:\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program2\GameData\BOSS\BOSS.dll
 C:\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program2\GameData\BOSS\readme.txt
 C:\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program2\GameData\BOSS\BOSS.pdb
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\AntiAliaser.dll
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\SkiptoRocket.dll
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Test Aliaser.exe
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\AntiAliaser.pdb
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Test Aliaser.pdb
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\SkiptoRocket.pdb
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\BOSS.dll
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\BOSS.pdb
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\BOSS.dll
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\BOSS.pdb
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\AntiAliaser.dll
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\SkiptoRocket.dll
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Test Aliaser.exe
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\AntiAliaser.pdb
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Test Aliaser.pdb
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\SkiptoRocket.pdb
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.csprojResolveAssemblyReference.cache
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.dll
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.pdb
