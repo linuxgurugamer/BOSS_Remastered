@@ -57,31 +57,7 @@ public class BOSS : MonoBehaviour
 
     public void Awake()
     {
-        if (!File.Exists<BOSS>(kspPluginDataFldr + "config.xml"))
-        {
-            try
-            {
-                createSettings();
-            }
-            catch
-            {
-                throw new AccessViolationException("Can't create settings file, please confirm directory is writeable.");
-            }
-        }
-        //Currently reading the readme for the help window. Think I may change this so that it doesnt go missing.
-        if (!File.Exists<BOSS>(BossFldr + "readme.txt"))
-            try
-            {
-                using (var sr = new StreamReader(BossFldr + "readme.txt"))
-                {
-                    helpContent = sr.ReadToEnd();
-                }
-            }
-            catch (Exception e)
-            {
-                print("Could not read readme.txt");
-            }
-
+        helpContent = KSPConstants.getHelpText();
         loadSettings();
         initToolbar();
         RenderingManager.AddToPostDrawQueue(60, drawGUI);

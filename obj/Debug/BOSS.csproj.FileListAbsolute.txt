@@ -11,6 +11,7 @@ C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\Test Aliaser.pdb
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\SkiptoRocket.pdb
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\BOSS.dll
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\BOSS.pdb
+C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.csprojResolveAssemblyReference.cache
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\BOSS.dll
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\BOSS.pdb
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\AntiAliaser.dll
@@ -19,6 +20,5 @@ C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Test Al
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\AntiAliaser.pdb
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\Test Aliaser.pdb
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\SkiptoRocket.pdb
-C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.csprojResolveAssemblyReference.cache
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.dll
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.pdb
