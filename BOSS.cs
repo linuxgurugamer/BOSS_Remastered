@@ -12,51 +12,47 @@ You should have received a copy of the GNU General Public License
 along with The Bolt-On Screenshot System.  If not, see <http://www.gnu.org/licenses/>.*/
 
 //---Warning, here be spaghetti-code. Read at your own risk, I am not responsible for any fits of rage, strokes or haemorrhages that occur from reading this code.---//
-
+/*
+ * Plugin Owner - Ted
+ * Contributors - Ted/SyNik4l
+ * Last Update - 1/19/2014
+ * Contact: synik4l@gmail.com
+ * Forum Thread: http://forum.kerbalspaceprogram.com/threads/34631-0-23-Bolt-On-Screenshot-System-(BOSS)-v2-1-2
+*/
 
 using System;
 using System.ComponentModel;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Drawing.Printing;
 using System.IO;
-using System.Security.Cryptography.X509Certificates;
+using System.Reflection;
 using System.Threading;
-using SyNUtils;
 using Toolbar;
 using UnityEngine;
-using Color = UnityEngine.Color;
 using File = KSP.IO.File;
 
 [KSPAddon(KSPAddon.Startup.EveryScene, false)]
 public class BOSS : MonoBehaviour
 {
+    private readonly string BossFldr = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\";
 
-    public Vector2 scrollPosition;
+    private readonly string kspPluginDataFldr =
+        System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\PluginData\BOSS\";
+
+    public BOSSSettings BOSSsettings = new BOSSSettings();
+    protected Rect BurstPos, helpWindowPos, showUIPos;
     public Vessel activeVessel;
-    protected Rect helpWindowPos, BurstPos, showUIPos;
-    private string BossFldr = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)+@"\";
-    private string kspPluginDataFldr = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)  + @"\PluginData\BOSS\";
-    public int screenshotCount, superSampleValueInt = 1, burstTime = 1;
+    public Vector2 scrollPosition;
+    public int screenshotCount, burstTime = 1, superSampleValueInt = 1;
     private double burstInterval = 1;
-    public string superSampleValueString = "1",
-        burstTimeString = "1",
-        burstIntervalString = "1",
-        screenshotKey = "z",
-        showGUIKey = "p",
-        helpContent = "",
-        worked = "";
+    public bool burstMode = false, showBurst = false, showHelp = true, showUI = true, unitySkin = true;
 
-    public bool showUI = true,
-        burstMode = false,
-        showBurst = false,
-        showHelp = true,
-        unitySkin = true,
-        unitySS = true;
-        
+    public string burstTimeString = "1",
+        helpContent = "",
+        screenshotKey = "z",
+        burstIntervalString = "1",
+        showGUIKey = "p",
+        superSampleValueString = "1";
+
     private IButton toolbarButton;
-    public BOSSSettings BOSSsettings = new BOSSSettings(); 
 
     public void Awake()
     {
@@ -72,22 +68,21 @@ public class BOSS : MonoBehaviour
             }
         }
         if (!File.Exists<BOSS>(BossFldr + "readme.txt"))
-        try
-        {
-            using (StreamReader sr = new StreamReader(BossFldr + "readme.txt"))
+            try
             {
-                 helpContent = sr.ReadToEnd();
-                
+                using (var sr = new StreamReader(BossFldr + "readme.txt"))
+                {
+                    helpContent = sr.ReadToEnd();
+                }
             }
-        }
-        catch (Exception e)
-        {
-            print("Could not read readme.txt");
-        }
+            catch (Exception e)
+            {
+                print("Could not read readme.txt");
+            }
 
         loadSettings();
         initToolbar();
-        RenderingManager.AddToPostDrawQueue(60, new Callback(drawGUI));
+        RenderingManager.AddToPostDrawQueue(60, drawGUI);
     }
 
     private void initToolbar()
@@ -95,7 +90,7 @@ public class BOSS : MonoBehaviour
         toolbarButton = ToolbarManager.Instance.add("BOSS", "toolbarButton");
         toolbarButton.TexturePath = showUI ? "BOSS/bon" : "BOSS/boff";
         toolbarButton.ToolTip = "Toggle Bolt-On Screenshot System";
-        toolbarButton.OnClick += (e) =>
+        toolbarButton.OnClick += e =>
         {
             if (showUI) showUI = false;
             else if (!showUI) showUI = true;
@@ -169,7 +164,7 @@ public class BOSS : MonoBehaviour
     {
         GUILayout.BeginVertical();
 
-        GUILayout.Label("Set interval in secs: " + burstInterval.ToString(), GUILayout.ExpandHeight(true),
+        GUILayout.Label("Set interval in secs: " + burstInterval, GUILayout.ExpandHeight(true),
             GUILayout.ExpandWidth(true));
         if (!double.TryParse(burstIntervalString, out burstInterval))
         {
@@ -178,7 +173,7 @@ public class BOSS : MonoBehaviour
         burstIntervalString = GUILayout.TextField(burstIntervalString);
 
 
-        GUILayout.Label("Set time in secs: " + burstTime.ToString(), GUILayout.ExpandHeight(true),
+        GUILayout.Label("Set time in secs: " + burstTime, GUILayout.ExpandHeight(true),
             GUILayout.ExpandWidth(true));
         if (!int.TryParse(burstTimeString, out burstTime))
         {
@@ -201,7 +196,7 @@ public class BOSS : MonoBehaviour
 
     private void UIContent(int windowID)
     {
-        GUIStyle mainGUI = new GUIStyle(GUI.skin.button);
+        var mainGUI = new GUIStyle(GUI.skin.button);
         mainGUI.normal.textColor = mainGUI.focused.textColor = Color.white;
         mainGUI.margin = new RectOffset(12, 12, 8, 0);
         mainGUI.hover.textColor = mainGUI.active.textColor = Color.yellow;
@@ -210,10 +205,8 @@ public class BOSS : MonoBehaviour
         mainGUI.padding = new RectOffset(8, 8, 8, 8);
 
         GUILayout.BeginVertical();
-        GUILayout.Label("Current supersample value: " + superSampleValueInt.ToString(), GUILayout.ExpandHeight(true),
+        GUILayout.Label("Current supersample value: " + superSampleValueInt, GUILayout.ExpandHeight(true),
             GUILayout.ExpandWidth(true));
-        GUILayout.Label("Did it work?" + worked, GUILayout.ExpandHeight(true),
-           GUILayout.ExpandWidth(true));
         GUILayout.Label("Current take ss key: ", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
         screenshotKey = GUILayout.TextField(screenshotKey);
         GUILayout.Label("Supersample value: ");
@@ -225,7 +218,6 @@ public class BOSS : MonoBehaviour
         superSampleValueString = GUILayout.TextField(superSampleValueString);
 
         if (GUILayout.Button("Take Screenshot", mainGUI, GUILayout.Width(125)))
-            //GUILayout.Button is "true" when clicked
         {
             if (burstMode)
             {
@@ -249,9 +241,6 @@ public class BOSS : MonoBehaviour
         showHelp = GUILayout.Toggle(showHelp, "Toggle Help", GUILayout.ExpandWidth(true));
         if (unitySkin) unitySkin = GUILayout.Toggle(unitySkin, "Toggle ksp skin", GUILayout.ExpandWidth(true));
         else unitySkin = GUILayout.Toggle(unitySkin, "Toggle unity skin", GUILayout.ExpandWidth(true));
-        if (unitySS) unitySS = GUILayout.Toggle(unitySS, "Toggle synik4l processing", GUILayout.ExpandWidth(true));
-        else unitySS = GUILayout.Toggle(unitySS, "Toggle unity processing", GUILayout.ExpandWidth(true));
-
 
         GUILayout.Label(screenshotCount + " screenshots taken.");
         GUILayout.EndVertical();
@@ -265,41 +254,7 @@ public class BOSS : MonoBehaviour
         print("Screenshot Count:" + screenshotCount);
         print(kspPluginDataFldr + screenshotFilename + ".png");
         print("Your supersample value was " + superSampleValueInt + "!");
-        if (unitySS)
-            Application.CaptureScreenshot(kspPluginDataFldr + screenshotFilename + ".png", superSampleValueInt);
-        else
-        {
-           
-            print(kspPluginDataFldr + screenshotFilename);
-            BackgroundWorker bw = new BackgroundWorker();
-
-            bw.WorkerReportsProgress = true;
-
-            bw.DoWork += new DoWorkEventHandler(
-                delegate(object o, DoWorkEventArgs args)
-                {
-                    BackgroundWorker b = o as BackgroundWorker;
-                    Application.CaptureScreenshot(kspPluginDataFldr + screenshotFilename + ".png", 1);
-                    Thread.Sleep(5000);
-                });
-
-            // what to do when worker completes its task (notify the user)
-            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
-                delegate(object o, RunWorkerCompletedEventArgs args)
-                {
-                    showHelp = !showHelp;
-                    SyNUtils.AntiAliaser process = new AntiAliaser();
-                    worked = process.processImage(kspPluginDataFldr + screenshotFilename, superSampleValueInt);
-                    System.IO.File.Delete(kspPluginDataFldr + screenshotFilename + "2.png");
-                    print("synik4l Screenshot processing successful!");
-                });
-
-            bw.RunWorkerAsync();
-
-           
-           
-            
-        }
+        Application.CaptureScreenshot(kspPluginDataFldr + screenshotFilename + ".png", superSampleValueInt);
         screenshotCount++;
         saveSettings();
     }
@@ -308,26 +263,22 @@ public class BOSS : MonoBehaviour
     {
         int bursts = burstTime;
         int interval = Convert.ToInt32(burstInterval*1000);
-        BackgroundWorker bw = new BackgroundWorker();
+        var bw = new BackgroundWorker();
 
         bw.WorkerReportsProgress = true;
 
-        bw.DoWork += new DoWorkEventHandler(
-            delegate(object o, DoWorkEventArgs args)
+        bw.DoWork += delegate(object o, DoWorkEventArgs args)
+        {
+            var b = o as BackgroundWorker;
+
+            for (; bursts > 0; bursts--)
             {
-                BackgroundWorker b = o as BackgroundWorker;
+                takeScreenshot();
+                Thread.Sleep(interval);
+            }
+        };
 
-
-                for (; bursts > 0; bursts--)
-                {
-                    takeScreenshot();
-                    Thread.Sleep(interval);
-                }
-            });
-
-        // what to do when worker completes its task (notify the user)
-        bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
-            delegate(object o, RunWorkerCompletedEventArgs args) { burstMode = !burstMode; });
+        bw.RunWorkerCompleted += delegate { burstMode = !burstMode; };
 
         bw.RunWorkerAsync();
     }
