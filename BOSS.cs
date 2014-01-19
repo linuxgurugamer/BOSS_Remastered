@@ -109,8 +109,8 @@ public class BOSS : MonoBehaviour
                 GUILayout.Height(150));
 
         if (showHelp)
-            helpWindowPos = GUILayout.Window(570, helpWindowPos, UIContentHelp, "Help!!!", GUILayout.Width(300),
-                GUILayout.Height(300));
+            helpWindowPos = GUILayout.Window(570, helpWindowPos, UIContentHelp, "Help!!!", GUILayout.Width(400),
+                GUILayout.Height(400));
 
         if (burstMode)
             BurstPos = GUILayout.Window(569, BurstPos, UIContentBurst, "Burst Control", GUILayout.Width(150),
@@ -188,7 +188,7 @@ public class BOSS : MonoBehaviour
 
     private void UIContentHelp(int windowID)
     {
-        scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(295), GUILayout.Height(295));
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(395), GUILayout.Height(395));
         GUILayout.Label(helpContent);
         GUILayout.EndScrollView();
         GUI.DragWindow(new Rect(0, 0, 10000, 20));
