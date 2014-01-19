@@ -44,8 +44,8 @@ public class BOSS : MonoBehaviour
     public Vector2 scrollPosition;
     public int screenshotCount, burstTime = 1, superSampleValueInt = 1;
     private double burstInterval = 1;
-    public bool showBurst = false, showHelp = true, showUI = true, unitySkin = true;
-
+    public bool showBurst = false, showHelp = true, showUI = true, unitySkin = true, buttonsEnabled = true;
+    
     public string burstTimeString = "1",
         helpContent = "",
         screenshotKey = "z",
@@ -128,17 +128,20 @@ public class BOSS : MonoBehaviour
         }
         try
         {
-            if (Input.GetKeyDown(screenshotKey))
+            if (buttonsEnabled)
             {
-                if (showBurst)
+                if (Input.GetKeyDown(screenshotKey))
                 {
-                    print("burst mode start");
-                    fireBurstShot();
-                }
-                else
-                {
-                    print("Screenshot button pressed!");
-                    takeScreenshot();
+                    if (showBurst)
+                    {
+                        print("burst mode start");
+                        fireBurstShot();
+                    }
+                    else
+                    {
+                        print("Screenshot button pressed!");
+                        takeScreenshot();
+                    }
                 }
             }
             if (Input.GetKeyDown(showGUIKey))
@@ -214,23 +217,28 @@ public class BOSS : MonoBehaviour
 
         if (GUILayout.Button("Take Screenshot", mainGUI, GUILayout.Width(125)))
         {
-            if (showBurst)
+            if (buttonsEnabled)
             {
-                superSampleValueInt = 1;
-                superSampleValueString = "1";
+                if (showBurst)
+                {
+                    superSampleValueInt = 1;
+                    superSampleValueString = "1";
 
-                print("burst mode shot");
-                fireBurstShot();
-            }
-            else
-            {
-                print("Screenshot button pressed!");
-                takeScreenshot();
+                    print("burst mode shot");
+                    fireBurstShot();
+                }
+                else
+                {
+                    print("Screenshot button pressed!");
+                    takeScreenshot();
+                }
             }
         }
         showBurst = GUILayout.Toggle(showBurst, "Toggle Burst", GUILayout.ExpandWidth(true));
         showHelp = GUILayout.Toggle(showHelp, "Toggle Help", GUILayout.ExpandWidth(true));
         GUILayout.Label(screenshotCount + " screenshots taken.");
+
+        if(!buttonsEnabled) GUILayout.Label("Currently supersampling!\n      Buttons locked!",GUILayout.Width(145), GUILayout.ExpandHeight(true));
         GUILayout.EndVertical();
         GUI.DragWindow(new Rect(0, 0, 10000, 20));
     }
@@ -245,8 +253,40 @@ public class BOSS : MonoBehaviour
         print(kspPluginDataFldr + screenshotFilename + ".png");
         print("Your supersample value was " + superSampleValueInt + "!");
         Application.CaptureScreenshot(kspPluginDataFldr + screenshotFilename + ".png", superSampleValueInt);
+        if (superSampleValueInt > 1)
+        {
+            buttonsEnabled = false;
+            checkforPicture(kspPluginDataFldr + screenshotFilename + ".png");
+        }
         screenshotCount++;
         saveSettings();
+    }
+
+    public void checkforPicture(string shotname)
+    {
+        /*This method checks for the image to appear inside the ss folder.
+        Thus not allowing the user to take multiple shots in a row crashing their game.*/
+
+        var bw = new BackgroundWorker();
+
+        bw.WorkerReportsProgress = true;
+
+        bw.DoWork += delegate(object o, DoWorkEventArgs args)
+        {
+            bool exists = false;
+            var b = o as BackgroundWorker;
+            while (exists == false)
+            {
+                Thread.Sleep(500);
+                if (File.Exists<BOSS>(kspPluginDataFldr + shotname))
+                {
+                    exists = true;
+                    buttonsEnabled = true;
+                }
+            }
+        };
+    bw.RunWorkerCompleted += delegate { print("Post Processing of:" + shotname + " finished"); };
+        bw.RunWorkerAsync();
     }
 
     public void fireBurstShot()
