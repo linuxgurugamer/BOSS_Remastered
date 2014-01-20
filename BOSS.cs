@@ -69,6 +69,7 @@ public class BOSS : MonoBehaviour
         helpContent = KSPConstants.getHelpText();
         loadSettings();
         initToolbar();
+        savePeriodically();
         RenderingManager.AddToPostDrawQueue(60, drawGUI);
     }
 
@@ -287,6 +288,23 @@ public class BOSS : MonoBehaviour
         bw.RunWorkerAsync();
     }
 
+
+    public void savePeriodically()
+    {
+        var bw = new BackgroundWorker();
+        bw.DoWork += delegate(object o, DoWorkEventArgs args)
+        {
+            const bool forever = true;
+            var b = o as BackgroundWorker;
+            while (forever)
+            {
+                saveSettings();
+                Thread.Sleep(20000);       
+            }
+        };
+        bw.RunWorkerAsync();
+    }
+
     public void fireBurstShot()
     {
         //Sets up background worker for burst fire mode. Takes the screenshots in seperate thread from the UI thread.
@@ -321,14 +339,18 @@ public class BOSS : MonoBehaviour
         BOSSsettings.SetValue("BOSS::showUIPos.x", "400");
         BOSSsettings.SetValue("BOSS::showUIPos.y", "400");
         BOSSsettings.SetValue("BOSS::screenshotCount", "0");
-        BOSSsettings.SetValue("BOSS::showUI", "True");
+
         BOSSsettings.SetValue("BOSS::showFullUI", "True");
+        BOSSsettings.SetValue("BOSS::showUI", "True");
+        BOSSsettings.SetValue("BOSS::showBurst", "False");
+        BOSSsettings.SetValue("BOSS::showHelp", "True");
+
         BOSSsettings.SetValue("BOSS::screenshotKey", "z");
         BOSSsettings.SetValue("BOSS::showGUIKey", "p");
         BOSSsettings.SetValue("BOSS::supersampValue", "1");
         BOSSsettings.SetValue("BOSS::burstTime", "1");
         BOSSsettings.SetValue("BOSS::burstInterval", "1");
-        BOSSsettings.SetValue("BOSS::showBurst", "False");
+       
         BOSSsettings.Save();
         print("Created BOSS settings.");
     }
@@ -342,14 +364,18 @@ public class BOSS : MonoBehaviour
         BOSSsettings.SetValue("BOSS::showUIPos.x", showUIPos.x.ToString());
         BOSSsettings.SetValue("BOSS::showUIPos.y", showUIPos.y.ToString());
         BOSSsettings.SetValue("BOSS::screenshotCount", screenshotCount.ToString());
-        BOSSsettings.SetValue("BOSS::showUI", showUI.ToString());
+
         BOSSsettings.SetValue("BOSS::showFullUI", showFullUI.ToString());
+        BOSSsettings.SetValue("BOSS::showUI", showUI.ToString());
+        BOSSsettings.SetValue("BOSS::showBurst", showBurst.ToString());
+        BOSSsettings.SetValue("BOSS::showHelp", showFullUI.ToString());
+
         BOSSsettings.SetValue("BOSS::screenshotKey", screenshotKey);
         BOSSsettings.SetValue("BOSS::showGUIKey", showGUIKey);
         BOSSsettings.SetValue("BOSS::supersampValue", superSampleValueString);
         BOSSsettings.SetValue("BOSS::burstTime", burstTime.ToString());
         BOSSsettings.SetValue("BOSS::burstInterval", burstInterval.ToString());
-        BOSSsettings.SetValue("BOSS::showBurst", showBurst.ToString());
+        
         BOSSsettings.Save();
         print("Saved BOSS settings.");
     }
@@ -364,14 +390,18 @@ public class BOSS : MonoBehaviour
         showUIPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::showUIPos.x"));
         showUIPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSS::showUIPos.y"));
         screenshotCount = Convert.ToInt32(BOSSsettings.GetValue("BOSS::screenshotCount"));
-        showUI = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showUI"));
+
         showFullUI = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showFullUI"));
+        showUI = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showUI"));
+        showBurst = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showBurst"));
+        showHelp = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showHelp"));
+
         screenshotKey = (BOSSsettings.GetValue("BOSS::screenshotKey"));
         showGUIKey = (BOSSsettings.GetValue("BOSS::showGUIKey"));
         superSampleValueString = (BOSSsettings.GetValue("BOSS::supersampValue"));
         burstTime = Convert.ToInt32(BOSSsettings.GetValue("BOSS::burstTime"));
         burstInterval = Convert.ToDouble(BOSSsettings.GetValue("BOSS::burstInterval"));
-        showBurst = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showBurst"));
+        
         print("Loaded BOSS settings.");
     }
 }
