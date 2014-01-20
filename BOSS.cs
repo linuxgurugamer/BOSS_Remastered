@@ -22,7 +22,6 @@ along with The Bolt-On Screenshot System.  If not, see <http://www.gnu.org/licen
 
 using System;
 using System.ComponentModel;
-using System.IO;
 using System.Reflection;
 using System.Threading;
 using Toolbar;
@@ -42,8 +41,8 @@ public class BOSS : MonoBehaviour
     public Vector2 scrollPosition;
     public int screenshotCount, burstTime = 1, superSampleValueInt = 1;
     private double burstInterval = 1;
-    public bool showBurst = false, showHelp = true, showUI = true, unitySkin = true, buttonsEnabled = true, overrideLimiter = false, showFullUI = true;
-    
+    public bool showBurst = false, showHelp = false, showUI = false, unitySkin = true, buttonsEnabled = true, overrideLimiter = false, showFullUI = false;
+
     public string burstTimeString = "1",
         helpContent = "",
         screenshotKey = "z",
@@ -76,21 +75,21 @@ public class BOSS : MonoBehaviour
     private void initToolbar()
     {
         toolbarButton = ToolbarManager.Instance.add("BOSS", "toolbarButton");
-        toolbarButton.TexturePath = showUI ? "BOSS/bon" : "BOSS/boff";
+        toolbarButton.TexturePath = showFullUI ? "BOSS/bon" : "BOSS/boff";
         toolbarButton.ToolTip = "Toggle Bolt-On Screenshot System";
         toolbarButton.OnClick += e =>
         {
-            if(showFullUI)
+            if (showFullUI)
             {
                 showFullUI = false;
                 showUI = false;
             }
-            else if(!showFullUI)
+            else if (!showFullUI)
             {
                 showUI = true;
                 showFullUI = true;
             }
-            toolbarButton.TexturePath = showUI ? "BOSS/bon" : "BOSS/boff";
+            toolbarButton.TexturePath = showFullUI ? "BOSS/bon" : "BOSS/boff";
             saveSettings();
         };
     }
@@ -143,11 +142,12 @@ public class BOSS : MonoBehaviour
             if (Input.GetKeyDown(showGUIKey))
             {
                 showFullUI = !showFullUI;
-                toolbarButton.TexturePath = showUI ? "BOSS/bon" : "BOSS/boff";
+                toolbarButton.TexturePath = showFullUI ? "BOSS/bon" : "BOSS/boff";
+                saveSettings();
             }
         }
         catch (UnityException e)
-            //Catches the unity exception for a keycode that isnt a valid key. Updating the UI to let the user know.
+        //Catches the unity exception for a keycode that isnt a valid key. Updating the UI to let the user know.
         {
             if (screenshotKey != "invalid" || screenshotKey != "") screenshotKey = "invalid";
         }
@@ -206,7 +206,7 @@ public class BOSS : MonoBehaviour
 
         GUILayout.BeginVertical();
 
-        GUILayout.Label("Current take ss key: ", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
+        GUILayout.Label("Current screenshot key: ", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
         screenshotKey = GUILayout.TextField(screenshotKey);
         GUILayout.Label("Supersample value: ");
 
@@ -237,7 +237,7 @@ public class BOSS : MonoBehaviour
         showHelp = GUILayout.Toggle(showHelp, "Toggle Help", GUILayout.ExpandWidth(true));
         GUILayout.Label(screenshotCount + " screenshots taken.");
 
-        if(!buttonsEnabled) GUILayout.Label("Currently supersampling!\n      Buttons locked!",GUILayout.Width(145), GUILayout.ExpandHeight(true));
+        if (!buttonsEnabled) GUILayout.Label("Currently supersampling!\n      Buttons locked!", GUILayout.Width(145), GUILayout.ExpandHeight(true));
         GUILayout.EndVertical();
         GUI.DragWindow(new Rect(0, 0, 10000, 20));
     }
@@ -254,8 +254,8 @@ public class BOSS : MonoBehaviour
         Application.CaptureScreenshot(kspPluginDataFldr + screenshotFilename + ".png", superSampleValueInt);
         if (superSampleValueInt > 1 && overrideLimiter != true)
         {
-                buttonsEnabled = false;
-                checkforPicture(kspPluginDataFldr + screenshotFilename + ".png");  
+            buttonsEnabled = false;
+            checkforPicture(kspPluginDataFldr + screenshotFilename + ".png");
         }
         screenshotCount++;
         saveSettings();
@@ -284,7 +284,7 @@ public class BOSS : MonoBehaviour
                 }
             }
         };
-    bw.RunWorkerCompleted += delegate { print("Post Processing of:" + shotname + " finished"); };
+        bw.RunWorkerCompleted += delegate { print("Post Processing of:" + shotname + " finished"); };
         bw.RunWorkerAsync();
     }
 
@@ -299,7 +299,7 @@ public class BOSS : MonoBehaviour
             while (forever)
             {
                 saveSettings();
-                Thread.Sleep(20000);       
+                Thread.Sleep(5000);
             }
         };
         bw.RunWorkerAsync();
@@ -309,7 +309,7 @@ public class BOSS : MonoBehaviour
     {
         //Sets up background worker for burst fire mode. Takes the screenshots in seperate thread from the UI thread.
         int bursts = burstTime;
-        int interval = Convert.ToInt32(burstInterval*1000);
+        int interval = Convert.ToInt32(burstInterval * 1000);
         var bw = new BackgroundWorker();
 
         bw.WorkerReportsProgress = true;
@@ -340,17 +340,17 @@ public class BOSS : MonoBehaviour
         BOSSsettings.SetValue("BOSS::showUIPos.y", "400");
         BOSSsettings.SetValue("BOSS::screenshotCount", "0");
 
-        BOSSsettings.SetValue("BOSS::showFullUI", "True");
-        BOSSsettings.SetValue("BOSS::showUI", "True");
+        BOSSsettings.SetValue("BOSS::showFullUI", "False");
+        BOSSsettings.SetValue("BOSS::showUI", "False");
         BOSSsettings.SetValue("BOSS::showBurst", "False");
-        BOSSsettings.SetValue("BOSS::showHelp", "True");
+        BOSSsettings.SetValue("BOSS::showHelp", "False");
 
         BOSSsettings.SetValue("BOSS::screenshotKey", "z");
         BOSSsettings.SetValue("BOSS::showGUIKey", "p");
         BOSSsettings.SetValue("BOSS::supersampValue", "1");
         BOSSsettings.SetValue("BOSS::burstTime", "1");
         BOSSsettings.SetValue("BOSS::burstInterval", "1");
-       
+
         BOSSsettings.Save();
         print("Created BOSS settings.");
     }
@@ -375,7 +375,7 @@ public class BOSS : MonoBehaviour
         BOSSsettings.SetValue("BOSS::supersampValue", superSampleValueString);
         BOSSsettings.SetValue("BOSS::burstTime", burstTime.ToString());
         BOSSsettings.SetValue("BOSS::burstInterval", burstInterval.ToString());
-        
+
         BOSSsettings.Save();
         print("Saved BOSS settings.");
     }
@@ -384,7 +384,7 @@ public class BOSS : MonoBehaviour
     {
         BOSSsettings.Load();
         BurstPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::BurstPos.x"));
-        BurstPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSS::BurstPos.y"));
+        BurstPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSSp::BurstPos.y"));
         helpWindowPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::helpWindowPos.x"));
         helpWindowPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSS::helpWindowPos.y"));
         showUIPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::showUIPos.x"));
@@ -401,7 +401,7 @@ public class BOSS : MonoBehaviour
         superSampleValueString = (BOSSsettings.GetValue("BOSS::supersampValue"));
         burstTime = Convert.ToInt32(BOSSsettings.GetValue("BOSS::burstTime"));
         burstInterval = Convert.ToDouble(BOSSsettings.GetValue("BOSS::burstInterval"));
-        
+
         print("Loaded BOSS settings.");
     }
 }
