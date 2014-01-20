@@ -1,5 +1,6 @@
-﻿Bolt On Screenshot System
-
+﻿		
+Bolt On Screenshot System
+==
 Plugin Owner - Ted
 Contributors - Ted/SyNik4l
 Last Update - 1/19/2014
@@ -9,10 +10,12 @@ Github Repo: https://github.com/SyNiK4L/BOSS or https://github.com/ZedsTed/BOSS_
 
 
 Description
+--
 This plugin allows you to take screenshots within KSP at a higher resolution than your current screen resolution, using a technique called 'supersampling'. 
 Press 'z' to take a screenshot(default) and 'p' to hide the UI. The screenshots are placed in /Gamedata/BOSS/PluginData/BOSS/
 
 Important
+--
 Using this mod requires a lot of RAM. Thus, burst fire mode is restricted to a supersample value of 1 - a.k.a no supersampling at all. 
 However, you can still use supersampling without restriction when not using burst fire.
 
@@ -33,15 +36,18 @@ change your supersampling value from one if the burst fire window is open. To us
 
 
 Plans
+--
 Rebuild the whole thing in Trigger Au's framework. For cleaniness and fun.
 Recommendations are welcome.
 	
 Known Bugs
+--
 If you type an invalid key in the ss key field. It show invalid. If you try to delete invalid by pressing backspace it brings it back.
 Thus you have to highlight the text and press and valid key. I'm going to try to find a better way to not allow a bad key. But allow you to have control over the input box.
 As you normally should. Fix coming soon.
 
 Changelog
+--
 v2.1.3 - Forked by SyNiK4L - added choosing of skins, burst shot mode, help window, cleaned up code a lot. Added saving of supersampling value.
 added to toolbar(http://forum.kerbalspaceprogram.com/threads/60863-0-23-0-Toolbar-1-4-0-Common-API-for-draggable-resizable-buttons-toolbar).)
 fixed crashing issue by limiting the user to 1 screenshot while the unity engine is still antialiasing the image.
@@ -59,6 +65,7 @@ v0.1.1 - Added in Settings Persistence.
 v0.1 - Public Release
 
 Keys
+--
 None	Not assigned (never returned as the result of a keystroke).
 Backspace	The backspace key.
 Delete	The forward delete key.
@@ -303,6 +310,7 @@ Joystick4Button19	Button 19 on forth joystick.
 
 
 Licensing
+--
 The Bolt-On Screenshot System is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
