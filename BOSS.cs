@@ -206,7 +206,7 @@ public class BOSS : MonoBehaviour
 
         GUILayout.BeginVertical();
 
-        GUILayout.Label("Current take ss key: ", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
+        GUILayout.Label("Current screenshot key: ", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
         screenshotKey = GUILayout.TextField(screenshotKey);
         GUILayout.Label("Supersample value: ");
 
