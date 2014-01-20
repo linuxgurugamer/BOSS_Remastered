@@ -42,7 +42,7 @@ public class BOSS : MonoBehaviour
     public Vector2 scrollPosition;
     public int screenshotCount, burstTime = 1, superSampleValueInt = 1;
     private double burstInterval = 1;
-    public bool showBurst = false, showHelp = true, showUI = true, unitySkin = true, buttonsEnabled = true;
+    public bool showBurst = false, showHelp = true, showUI = true, unitySkin = true, buttonsEnabled = true, overrideLimiter = false, showFullUI = true;
     
     public string burstTimeString = "1",
         helpContent = "",
@@ -55,6 +55,17 @@ public class BOSS : MonoBehaviour
 
     public void Awake()
     {
+        if (!File.Exists<BOSS>(kspPluginDataFldr + "config.xml"))
+        {
+            try
+            {
+                createSettings();
+            }
+            catch
+            {
+                throw new AccessViolationException("Can't create settings file, please confirm directory is writeable.");
+            }
+        }
         helpContent = KSPConstants.getHelpText();
         loadSettings();
         initToolbar();
@@ -68,8 +79,16 @@ public class BOSS : MonoBehaviour
         toolbarButton.ToolTip = "Toggle Bolt-On Screenshot System";
         toolbarButton.OnClick += e =>
         {
-            if (showUI) showUI = false;
-            else if (!showUI) showUI = true;
+            if(showFullUI)
+            {
+                showFullUI = false;
+                showUI = false;
+            }
+            else if(!showFullUI)
+            {
+                showUI = true;
+                showFullUI = true;
+            }
             toolbarButton.TexturePath = showUI ? "BOSS/bon" : "BOSS/boff";
             saveSettings();
         };
@@ -79,18 +98,20 @@ public class BOSS : MonoBehaviour
     {
         if (unitySkin) GUI.skin = null;
         else GUI.skin = HighLogic.Skin;
+        if (showFullUI)
+        {
+            if (showUI)
+                showUIPos = GUILayout.Window(568, showUIPos, UIContent, "B.O.S.S. Control", GUILayout.Width(150),
+                    GUILayout.Height(150));
 
-        if (showUI)
-            showUIPos = GUILayout.Window(568, showUIPos, UIContent, "B.O.S.S. Control", GUILayout.Width(150),
-                GUILayout.Height(150));
+            if (showHelp)
+                helpWindowPos = GUILayout.Window(570, helpWindowPos, UIContentHelp, "Help!!!", GUILayout.Width(400),
+                    GUILayout.Height(400));
 
-        if (showHelp)
-            helpWindowPos = GUILayout.Window(570, helpWindowPos, UIContentHelp, "Help!!!", GUILayout.Width(400),
-                GUILayout.Height(400));
-
-        if (showBurst)
-            BurstPos = GUILayout.Window(569, BurstPos, UIContentBurst, "Burst Control", GUILayout.Width(150),
-                GUILayout.Height(150));
+            if (showBurst)
+                BurstPos = GUILayout.Window(569, BurstPos, UIContentBurst, "Burst Control", GUILayout.Width(150),
+                    GUILayout.Height(150));
+        }
     }
 
     public void Update()
@@ -120,9 +141,7 @@ public class BOSS : MonoBehaviour
             }
             if (Input.GetKeyDown(showGUIKey))
             {
-                    showUI = !showUI;
-                    showHelp = !showHelp;
-                    showBurst = !showBurst;
+                showFullUI = !showFullUI;
                 toolbarButton.TexturePath = showUI ? "BOSS/bon" : "BOSS/boff";
             }
         }
@@ -160,12 +179,17 @@ public class BOSS : MonoBehaviour
         GUILayout.EndScrollView();
 
         GUILayout.BeginVertical();
-
         GUILayout.Space(8);
+        GUILayout.EndVertical();
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(15);
         if (unitySkin) unitySkin = GUILayout.Toggle(unitySkin, "Toggle ksp skin", GUILayout.ExpandWidth(true));
         else unitySkin = GUILayout.Toggle(unitySkin, "Toggle unity skin", GUILayout.ExpandWidth(true));
+        GUILayout.Space(75);
+        overrideLimiter = GUILayout.Toggle(overrideLimiter, "Override limiter", GUILayout.ExpandWidth(true));
 
-        GUILayout.EndVertical();
+        GUILayout.EndHorizontal();
+
         GUI.DragWindow(new Rect(0, 0, 10000, 20));
     }
 
@@ -227,10 +251,10 @@ public class BOSS : MonoBehaviour
         print(kspPluginDataFldr + screenshotFilename + ".png");
         print("Your supersample value was " + superSampleValueInt + "!");
         Application.CaptureScreenshot(kspPluginDataFldr + screenshotFilename + ".png", superSampleValueInt);
-        if (superSampleValueInt > 1)
+        if (superSampleValueInt > 1 && overrideLimiter != true)
         {
-            buttonsEnabled = false;
-            checkforPicture(kspPluginDataFldr + screenshotFilename + ".png");
+                buttonsEnabled = false;
+                checkforPicture(kspPluginDataFldr + screenshotFilename + ".png");  
         }
         screenshotCount++;
         saveSettings();
@@ -298,6 +322,7 @@ public class BOSS : MonoBehaviour
         BOSSsettings.SetValue("BOSS::showUIPos.y", "400");
         BOSSsettings.SetValue("BOSS::screenshotCount", "0");
         BOSSsettings.SetValue("BOSS::showUI", "True");
+        BOSSsettings.SetValue("BOSS::showFullUI", "True");
         BOSSsettings.SetValue("BOSS::screenshotKey", "z");
         BOSSsettings.SetValue("BOSS::showGUIKey", "p");
         BOSSsettings.SetValue("BOSS::supersampValue", "1");
@@ -318,6 +343,7 @@ public class BOSS : MonoBehaviour
         BOSSsettings.SetValue("BOSS::showUIPos.y", showUIPos.y.ToString());
         BOSSsettings.SetValue("BOSS::screenshotCount", screenshotCount.ToString());
         BOSSsettings.SetValue("BOSS::showUI", showUI.ToString());
+        BOSSsettings.SetValue("BOSS::showFullUI", showFullUI.ToString());
         BOSSsettings.SetValue("BOSS::screenshotKey", screenshotKey);
         BOSSsettings.SetValue("BOSS::showGUIKey", showGUIKey);
         BOSSsettings.SetValue("BOSS::supersampValue", superSampleValueString);
@@ -339,6 +365,7 @@ public class BOSS : MonoBehaviour
         showUIPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSS::showUIPos.y"));
         screenshotCount = Convert.ToInt32(BOSSsettings.GetValue("BOSS::screenshotCount"));
         showUI = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showUI"));
+        showFullUI = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showFullUI"));
         screenshotKey = (BOSSsettings.GetValue("BOSS::screenshotKey"));
         showGUIKey = (BOSSsettings.GetValue("BOSS::showGUIKey"));
         superSampleValueString = (BOSSsettings.GetValue("BOSS::supersampValue"));

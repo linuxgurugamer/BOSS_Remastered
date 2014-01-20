@@ -17,8 +17,19 @@ Important
 Using this mod requires alot of ram. Thus burst fire mode is restricted to no supersampling. Although you can still use supersampling when not using burst fire.
 I recommend not going higher than 3 or 4. You may be able to pull off 5. But it may crash/freeze your game for a second. if the game freezes. You are not missing any frames.
 So just let the game sit while it processes. Due to the KSP ram limit. I have added a limiter on the screenshot key/button, if your super sampling value is set higher than 1.
-This is to prevent multiple screenshots being taken too quickly causing you to go over the KSP ram limit, and crash your game. The plugin checks for the image to finish processing
-Then allows you to take more screenshots.
+This is to prevent multiple screenshots being taken too quickly causing you to go over the KSP ram limit, and crash your game. The plugin checks for the image to finish processing.
+Then allows you to take more screenshots. You can override this limiter by toggling on the 'override limiter' button on the help window.(WARNING: By doing this. You are pretty much
+limited to 2 screenshots at a time(because it will crash if you take more). And you may still crash your game by doing it. Everyones computer is different, and everyone is using different
+amounts of mods. So it could work better for some than others. So just know by overriding that limiter. You are subject to crashes. 
+
+Burst Fire mode: As explained above this is purely for automatically taking screenshots over a period of time. So no supersampling is allowed while this is toggled on. Thus you cannot 
+change your supersampling value from one if the burst fire window is open. To use it
+1. Toggle burst fire
+2. Set interval(this field does allow point values - just make sure if for example you want .3 - You enter 0.3)
+3. Set time frame to take screenshots(only whole numbers).
+4. Hide UI with 'P'
+4. Press screenshot hotkey.
+5. Do something cool to pictures of!!!
 
 Description
 This plugin allows you to take screenshots within KSP at a higher resolution than your current screen resolution, using a technique called 'supersampling'. 
