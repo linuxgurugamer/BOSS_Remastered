@@ -27,7 +27,7 @@ change your supersampling value from one if the burst fire window is open. To us
 1. Toggle burst fire
 2. Set interval(this field does allow point values - just make sure if for example you want .3 - You enter 0.3)
 3. Set time frame to take screenshots(only whole numbers).
-4. Hide UI with 'P'
+4. Hide UI with 'P' or with toolbar button
 4. Press screenshot hotkey.
 5. Do something cool to pictures of!!!
 
