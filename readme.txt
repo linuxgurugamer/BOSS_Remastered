@@ -3,50 +3,59 @@
     public static string getHelpText()
     {
         string text = @"B.O.S.S.
+		
 Bolt On Screenshot System
-
+==
 
 Plugin Owner - Ted
 Contributors - Ted/SyNik4l
 Last Update - 1/19/2014
-Contact: synik4l@gmail.com
+Contact: synik4l@gmail.com/ted@squad.com.mx
 Forum Thread: http://forum.kerbalspaceprogram.com/threads/34631-0-23-Bolt-On-Screenshot-System-(BOSS)-v2-1-2
-Github Repo: https://github.com/SyNiK4L/BOSS
+Github Repo: https://github.com/SyNiK4L/BOSS or https://github.com/ZedsTed/BOSS_Remastered
+
+
+Description
+--
+This plugin allows you to take screenshots within KSP at a higher resolution than your current screen resolution, using a technique called 'supersampling'. 
+Press 'z' to take a screenshot(default) and 'p' to hide the UI. The screenshots are placed in /Gamedata/BOSS/PluginData/BOSS/
 
 Important
-Using this mod requires alot of ram. Thus burst fire mode is restricted to no supersampling. Although you can still use supersampling when not using burst fire.
-I recommend not going higher than 3 or 4. You may be able to pull off 5. But it may crash/freeze your game for a second. if the game freezes. You are not missing any frames.
-So just let the game sit while it processes. Due to the KSP ram limit. I have added a limiter on the screenshot key/button, if your super sampling value is set higher than 1.
-This is to prevent multiple screenshots being taken too quickly causing you to go over the KSP ram limit, and crash your game. The plugin checks for the image to finish processing.
-Then allows you to take more screenshots. You can override this limiter by toggling on the 'override limiter' button on the help window.(WARNING: By doing this. You are pretty much
-limited to 2 screenshots at a time(because it will crash if you take more). And you may still crash your game by doing it. Everyones computer is different, and everyone is using different
-amounts of mods. So it could work better for some than others. So just know by overriding that limiter. You are subject to crashes. 
+--
+Using this mod requires a lot of RAM. Thus, burst fire mode is restricted to a supersample value of 1 - a.k.a no supersampling at all. 
+However, you can still use supersampling without restriction when not using burst fire.
+
+I recommend not going higher than 3 or 4; you may be able to pull off 5, but it may crash/freeze your game for a second. If the game freezes, you are not missing any frames. So just let the game sit while it processes. 
+I have added a limiter on the screenshot key/button if your super sampling value is set higher than 1, mainly due to the KSP ram limit. This is to prevent multiple screenshots being taken too quickly causing you to go over the KSP ram limit and crash your game. The plugin checks for the image to finish processing.
+Then allows you to take more screenshots. You can override this limiter by toggling on the 'override limiter' button on the help window.(WARNING: By doing this. You are pretty much limited to 2 screenshots at a time(because it will crash if you take more). Though, you may still crash your game by doing it, everyone's computer is different, and everyone is using different Add-Ons/Plugins alongside this. In the end, it could work better for some than others. Just know by overriding that limiter, you are subject to crashes. 
 
 Burst Fire mode: As explained above this is purely for automatically taking screenshots over a period of time. So no supersampling is allowed while this is toggled on. Thus you cannot 
 change your supersampling value from one if the burst fire window is open. To use it
 1. Toggle burst fire
 2. Set interval(this field does allow point values - just make sure if for example you want .3 - You enter 0.3)
-3. Set time frame to take screenshots(only whole numbers).
+3. Set time frame to take screenshots - only whole numbers.
 4. Hide UI with 'P' or with toolbar button
 4. Press screenshot hotkey.
-5. Do something cool to pictures of!!!
-
-Description
-This plugin allows you to take screenshots within KSP at a higher resolution than your current screen resolution, using a technique called 'supersampling'. 
-Press 'z' to take a screenshot(default) and 'p' to hide the UI. The screenshots are placed in /Gamedata/BOSS/PluginData/BOSS/
+5. Do something cool to take pictures of!
 
 
-Plans: 
+
+
+Plans
+--
 Rebuild the whole thing in Trigger Au's framework. For cleaniness and fun.
-Recommendation are welcome.
+Recommendations are welcome.
 	
-Known Bugs: If you type an invalid key in the ss key field. It show invalid. If you try to delete invalid by pressing backspace it brings it back.
+Known Bugs
+--
+If you type an invalid key in the ss key field. It show invalid. If you try to delete invalid by pressing backspace it brings it back.
 Thus you have to highlight the text and press and valid key. I'm going to try to find a better way to not allow a bad key. But allow you to have control over the input box.
 As you normally should. Fix coming soon.
 
 Changelog
-v2.1.3 - Forked by SyNiK4L - added choosing of skins, burst shot mode, help window, cleaned up code ALOT. Added saving of supersampling value.
-added to toolbar(http://forum.kerbalspaceprogram.com/threads/60863-0-23-0-Toolbar-1-4-0-Common-API-for-draggable-resizable-buttons-toolbar).
+--
+v2.1.3 - Forked by SyNiK4L - added choosing of skins, burst shot mode, help window, cleaned up code a lot. Added saving of supersampling value.
+added to toolbar(http://forum.kerbalspaceprogram.com/threads/60863-0-23-0-Toolbar-1-4-0-Common-API-for-draggable-resizable-buttons-toolbar).)
 fixed crashing issue by limiting the user to 1 screenshot while the unity engine is still antialiasing the image.
 
 v2.1.2 - Fixed up the issues with hiding UI, made it persistent and changed it to the p key.
@@ -61,7 +70,8 @@ v0.1.2 - Prevented spamming of the debug log. Fixed non-updating text field.
 v0.1.1 - Added in Settings Persistence.
 v0.1 - Public Release
 
-
+Keys
+--
 None	Not assigned (never returned as the result of a keystroke).
 Backspace	The backspace key.
 Delete	The forward delete key.
@@ -305,7 +315,8 @@ Joystick4Button18	Button 18 on forth joystick.
 Joystick4Button19	Button 19 on forth joystick.
 
 
-
+Licensing
+--
 The Bolt-On Screenshot System is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
