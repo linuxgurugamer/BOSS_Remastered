@@ -24,6 +24,7 @@ using System;
 using System.ComponentModel;
 using System.Reflection;
 using System.Threading;
+using System.Xml.Schema;
 using Toolbar;
 using UnityEngine;
 using File = KSP.IO.File;
@@ -49,7 +50,8 @@ public class BOSS : MonoBehaviour
         unitySkin = true,
         buttonsEnabled = true,
         overrideLimiter = false,
-        showFullUI = false;
+        showFullUI = false,
+        uiSaveDelay = false;
 
     public string burstTimeString = "1",
         helpContent = "",
@@ -157,18 +159,25 @@ public class BOSS : MonoBehaviour
 
     private void UIContentBurst(int windowID)
     {
+        if (Event.current.type == EventType.KeyDown && GUI.GetNameOfFocusedControl() == "burstinterval" &&
+            Event.current.keyCode != KeyCode.Backspace ||
+            Event.current.type == EventType.keyDown && GUI.GetNameOfFocusedControl() == "bursttime" &&
+            Event.current.keyCode != KeyCode.Backspace)
+            saveSettings();
+
+
         GUILayout.BeginVertical();
 
         GUILayout.Label("Set interval in secs: " + burstInterval, GUILayout.ExpandHeight(true),
             GUILayout.ExpandWidth(true));
         if (!double.TryParse(burstIntervalString, out burstInterval)) burstIntervalString = " ";
-
+        GUI.SetNextControlName("burstinterval");
         burstIntervalString = GUILayout.TextField(burstIntervalString);
 
         GUILayout.Label("Set time in secs: " + burstTime, GUILayout.ExpandHeight(true),
             GUILayout.ExpandWidth(true));
         if (!int.TryParse(burstTimeString, out burstTime)) burstTimeString = " ";
-
+        GUI.SetNextControlName("bursttime");
         burstTimeString = GUILayout.TextField(burstTimeString);
 
         GUILayout.EndVertical();
@@ -188,8 +197,22 @@ public class BOSS : MonoBehaviour
         GUILayout.Space(15);
         if (unitySkin) unitySkin = GUILayout.Toggle(unitySkin, "Toggle ksp skin", GUILayout.ExpandWidth(true));
         else unitySkin = GUILayout.Toggle(unitySkin, "Toggle unity skin", GUILayout.ExpandWidth(true));
+        if (Event.current.type == EventType.Repaint &&
+            GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition) && !uiSaveDelay)
+        {
+            uiSaveDelay = true;
+            UISave();
+            print("UI State saved");
+        }
         GUILayout.Space(75);
         overrideLimiter = GUILayout.Toggle(overrideLimiter, "Override limiter", GUILayout.ExpandWidth(true));
+        if (Event.current.type == EventType.Repaint &&
+            GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition) && !uiSaveDelay)
+        {
+            uiSaveDelay = true;
+            UISave();
+            print("UI State saved");
+        }
 
         GUILayout.EndHorizontal();
 
@@ -206,22 +229,21 @@ public class BOSS : MonoBehaviour
             mainGUI.onFocused.textColor = mainGUI.onHover.textColor = mainGUI.onActive.textColor = Color.green;
         mainGUI.padding = new RectOffset(8, 8, 8, 8);
 
-        if (Event.current.type == EventType.KeyDown && GUI.GetNameOfFocusedControl() == "superSampleVal" && Event.current.keyCode != KeyCode.Backspace ||
-            Event.current.type == EventType.keyDown && GUI.GetNameOfFocusedControl() == "currentkey" && Event.current.keyCode != KeyCode.Backspace ||
-            Event.current.type == EventType.mouseDown && showUIPos.Contains(Event.current.mousePosition) ||
-            Event.current.type == EventType.mouseDown && helpWindowPos.Contains(Event.current.mousePosition) ||
-            Event.current.type == EventType.mouseDown && BurstPos.Contains(Event.current.mousePosition))
+        if (Event.current.type == EventType.KeyDown && GUI.GetNameOfFocusedControl() == "superSampleVal" &&
+            Event.current.keyCode != KeyCode.Backspace ||
+            Event.current.type == EventType.keyDown && GUI.GetNameOfFocusedControl() == "currentkey" &&
+            Event.current.keyCode != KeyCode.Backspace)
             saveSettings();
 
         GUILayout.BeginVertical();
-        
+
         GUILayout.Label("Current screenshot key: ", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
         GUI.SetNextControlName("currentkey");
         screenshotKey = GUILayout.TextField(screenshotKey);
         GUILayout.Label("Supersample value: ");
 
         if (!int.TryParse(superSampleValueString, out superSampleValueInt)) superSampleValueString = " ";
-      
+
 
         GUI.SetNextControlName("superSampleVal");
         superSampleValueString = GUILayout.TextField(superSampleValueString);
@@ -244,8 +266,23 @@ public class BOSS : MonoBehaviour
                 }
             }
         }
+
         showBurst = GUILayout.Toggle(showBurst, "Toggle Burst", GUILayout.ExpandWidth(true));
+        if (Event.current.type == EventType.Repaint &&
+            GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition) && !uiSaveDelay)
+        {
+            uiSaveDelay = true;
+            UISave();
+            print("UI State saved");
+        }
         showHelp = GUILayout.Toggle(showHelp, "Toggle Help", GUILayout.ExpandWidth(true));
+        if (Event.current.type == EventType.Repaint &&
+            GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition) && !uiSaveDelay)
+        {
+            uiSaveDelay = true;
+            UISave();
+            print("UI State saved");
+        }
         GUILayout.Label(screenshotCount + " screenshots taken.");
 
         if (!buttonsEnabled)
@@ -273,6 +310,27 @@ public class BOSS : MonoBehaviour
         screenshotCount++;
         saveSettings();
     }
+
+
+    public void UISave()
+    {
+        var bw = new BackgroundWorker();
+
+        bw.WorkerReportsProgress = true;
+
+        bw.DoWork += delegate(object o, DoWorkEventArgs args)
+        {
+            var b = o as BackgroundWorker;
+            Thread.Sleep(4000);
+            saveSettings();
+            bw.ReportProgress(100);
+        };
+
+        bw.RunWorkerCompleted += delegate { uiSaveDelay = false; };
+
+        bw.RunWorkerAsync();
+    }
+
 
     public void checkforPicture(string shotname)
     {
