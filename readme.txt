@@ -48,6 +48,7 @@ As you normally should. Fix coming soon.
 
 Changelog
 --
+v2.1.4 - Fixed a couple random persistence bugs. UI should now persist throuh scene changes.
 v2.1.3 - Forked by SyNiK4L - added choosing of skins, burst shot mode, help window, cleaned up code a lot. Added saving of supersampling value.
 added to toolbar(http://forum.kerbalspaceprogram.com/threads/60863-0-23-0-Toolbar-1-4-0-Common-API-for-draggable-resizable-buttons-toolbar).)
 fixed crashing issue by limiting the user to 1 screenshot while the unity engine is still antialiasing the image.

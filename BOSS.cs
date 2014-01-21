@@ -15,8 +15,8 @@ along with The Bolt-On Screenshot System.  If not, see <http://www.gnu.org/licen
 /*
  * Plugin Owner - Ted
  * Contributors - Ted/SyNik4l
- * Last Update - 1/19/2014
- * Contact: synik4l@gmail.com
+ * Last Update - 1/21/2014
+ * Contact: ted@squad.com.mx/synik4l@gmail.com
  * Forum Thread: http://forum.kerbalspaceprogram.com/threads/34631-0-23-Bolt-On-Screenshot-System-(BOSS)-v2-1-2
 */
 
@@ -24,7 +24,6 @@ using System;
 using System.ComponentModel;
 using System.Reflection;
 using System.Threading;
-using System.Xml.Schema;
 using Toolbar;
 using UnityEngine;
 using File = KSP.IO.File;
@@ -202,7 +201,6 @@ public class BOSS : MonoBehaviour
         {
             uiSaveDelay = true;
             UISave();
-            print("UI State saved");
         }
         GUILayout.Space(75);
         overrideLimiter = GUILayout.Toggle(overrideLimiter, "Override limiter", GUILayout.ExpandWidth(true));
@@ -211,7 +209,6 @@ public class BOSS : MonoBehaviour
         {
             uiSaveDelay = true;
             UISave();
-            print("UI State saved");
         }
 
         GUILayout.EndHorizontal();
@@ -273,7 +270,6 @@ public class BOSS : MonoBehaviour
         {
             uiSaveDelay = true;
             UISave();
-            print("UI State saved");
         }
         showHelp = GUILayout.Toggle(showHelp, "Toggle Help", GUILayout.ExpandWidth(true));
         if (Event.current.type == EventType.Repaint &&
@@ -281,7 +277,6 @@ public class BOSS : MonoBehaviour
         {
             uiSaveDelay = true;
             UISave();
-            print("UI State saved");
         }
         GUILayout.Label(screenshotCount + " screenshots taken.");
 
@@ -295,7 +290,6 @@ public class BOSS : MonoBehaviour
     public void takeScreenshot()
     {
         saveSettings();
-        loadSettings();
         string screenshotFilename = "SS_" + DateTime.Today.ToString("MM-dd-yyyy") + "_" +
                                     DateTime.Now.ToString("HH-mm-ss");
         print("Screenshot Count:" + screenshotCount);

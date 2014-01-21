@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using KSP.IO;
+﻿using KSP.IO;
 
 
 public class BOSSSettings

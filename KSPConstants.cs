@@ -7,7 +7,7 @@
 
 Plugin Owner - Ted
 Contributors - Ted/SyNik4l
-Last Update - 1/19/2014
+Last Update - 1/21/2014
 Contact: synik4l@gmail.com/ted@squad.com.mx
 Forum Thread: http://forum.kerbalspaceprogram.com/threads/34631-0-23-Bolt-On-Screenshot-System-(BOSS)-v2-1-2
 Github Repo: https://github.com/SyNiK4L/BOSS or https://github.com/ZedsTed/BOSS_Remastered
@@ -52,6 +52,7 @@ As you normally should. Fix coming soon.
 
 Changelog
 --
+v2.1.4 - Fixed a couple random persistence bugs. UI should now persist throuh scene changes.
 v2.1.3 - Forked by SyNiK4L - added choosing of skins, burst shot mode, help window, cleaned up code a lot. Added saving of supersampling value.
 added to toolbar(http://forum.kerbalspaceprogram.com/threads/60863-0-23-0-Toolbar-1-4-0-Common-API-for-draggable-resizable-buttons-toolbar).)
 fixed crashing issue by limiting the user to 1 screenshot while the unity engine is still antialiasing the image.
