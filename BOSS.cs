@@ -41,7 +41,15 @@ public class BOSS : MonoBehaviour
     public Vector2 scrollPosition;
     public int screenshotCount, burstTime = 1, superSampleValueInt = 1;
     private double burstInterval = 1;
-    public bool showBurst = false, showHelp = false, showUI = false, unitySkin = true, buttonsEnabled = true, overrideLimiter = false, showFullUI = false;
+    private IButton toolbarButton;
+
+    public bool showBurst = false,
+        showHelp = false,
+        showUI = false,
+        unitySkin = true,
+        buttonsEnabled = true,
+        overrideLimiter = false,
+        showFullUI = false;
 
     public string burstTimeString = "1",
         helpContent = "",
@@ -49,8 +57,6 @@ public class BOSS : MonoBehaviour
         burstIntervalString = "1",
         showGUIKey = "p",
         superSampleValueString = "1";
-
-    private IButton toolbarButton;
 
     public void Awake()
     {
@@ -68,7 +74,6 @@ public class BOSS : MonoBehaviour
         helpContent = KSPConstants.getHelpText();
         loadSettings();
         initToolbar();
-        savePeriodically();
         RenderingManager.AddToPostDrawQueue(60, drawGUI);
     }
 
@@ -123,20 +128,17 @@ public class BOSS : MonoBehaviour
         }
         try
         {
-            if (buttonsEnabled)
+            if (buttonsEnabled && Input.GetKeyDown(screenshotKey))
             {
-                if (Input.GetKeyDown(screenshotKey))
+                if (showBurst)
                 {
-                    if (showBurst)
-                    {
-                        print("burst mode start");
-                        fireBurstShot();
-                    }
-                    else
-                    {
-                        print("Screenshot button pressed!");
-                        takeScreenshot();
-                    }
+                    print("burst mode start");
+                    fireBurstShot();
+                }
+                else
+                {
+                    print("Screenshot button pressed!");
+                    takeScreenshot();
                 }
             }
             if (Input.GetKeyDown(showGUIKey))
@@ -147,7 +149,7 @@ public class BOSS : MonoBehaviour
             }
         }
         catch (UnityException e)
-        //Catches the unity exception for a keycode that isnt a valid key. Updating the UI to let the user know.
+            //Catches the unity exception for a keycode that isnt a valid key. Updating the UI to let the user know.
         {
             if (screenshotKey != "invalid" || screenshotKey != "") screenshotKey = "invalid";
         }
@@ -204,16 +206,25 @@ public class BOSS : MonoBehaviour
             mainGUI.onFocused.textColor = mainGUI.onHover.textColor = mainGUI.onActive.textColor = Color.green;
         mainGUI.padding = new RectOffset(8, 8, 8, 8);
 
-        GUILayout.BeginVertical();
+        if (Event.current.type == EventType.KeyDown && GUI.GetNameOfFocusedControl() == "superSampleVal" && Event.current.keyCode != KeyCode.Backspace ||
+            Event.current.type == EventType.keyDown && GUI.GetNameOfFocusedControl() == "currentkey" && Event.current.keyCode != KeyCode.Backspace ||
+            Event.current.type == EventType.mouseDown && showUIPos.Contains(Event.current.mousePosition) ||
+            Event.current.type == EventType.mouseDown && helpWindowPos.Contains(Event.current.mousePosition) ||
+            Event.current.type == EventType.mouseDown && BurstPos.Contains(Event.current.mousePosition))
+            saveSettings();
 
+        GUILayout.BeginVertical();
+        
         GUILayout.Label("Current screenshot key: ", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
+        GUI.SetNextControlName("currentkey");
         screenshotKey = GUILayout.TextField(screenshotKey);
         GUILayout.Label("Supersample value: ");
 
         if (!int.TryParse(superSampleValueString, out superSampleValueInt)) superSampleValueString = " ";
+      
 
+        GUI.SetNextControlName("superSampleVal");
         superSampleValueString = GUILayout.TextField(superSampleValueString);
-
         if (GUILayout.Button("Take Screenshot", mainGUI, GUILayout.Width(125)))
         {
             if (buttonsEnabled)
@@ -237,7 +248,9 @@ public class BOSS : MonoBehaviour
         showHelp = GUILayout.Toggle(showHelp, "Toggle Help", GUILayout.ExpandWidth(true));
         GUILayout.Label(screenshotCount + " screenshots taken.");
 
-        if (!buttonsEnabled) GUILayout.Label("Currently supersampling!\n      Buttons locked!", GUILayout.Width(145), GUILayout.ExpandHeight(true));
+        if (!buttonsEnabled)
+            GUILayout.Label("Currently supersampling!\n      Buttons locked!", GUILayout.Width(145),
+                GUILayout.ExpandHeight(true));
         GUILayout.EndVertical();
         GUI.DragWindow(new Rect(0, 0, 10000, 20));
     }
@@ -268,8 +281,6 @@ public class BOSS : MonoBehaviour
 
         var bw = new BackgroundWorker();
 
-        bw.WorkerReportsProgress = true;
-
         bw.DoWork += delegate(object o, DoWorkEventArgs args)
         {
             bool exists = false;
@@ -284,24 +295,6 @@ public class BOSS : MonoBehaviour
                 }
             }
         };
-        bw.RunWorkerCompleted += delegate { print("Post Processing of:" + shotname + " finished"); };
-        bw.RunWorkerAsync();
-    }
-
-
-    public void savePeriodically()
-    {
-        var bw = new BackgroundWorker();
-        bw.DoWork += delegate(object o, DoWorkEventArgs args)
-        {
-            const bool forever = true;
-            var b = o as BackgroundWorker;
-            while (forever)
-            {
-                saveSettings();
-                Thread.Sleep(5000);
-            }
-        };
         bw.RunWorkerAsync();
     }
 
@@ -309,7 +302,7 @@ public class BOSS : MonoBehaviour
     {
         //Sets up background worker for burst fire mode. Takes the screenshots in seperate thread from the UI thread.
         int bursts = burstTime;
-        int interval = Convert.ToInt32(burstInterval * 1000);
+        int interval = Convert.ToInt32(burstInterval*1000);
         var bw = new BackgroundWorker();
 
         bw.WorkerReportsProgress = true;
@@ -345,6 +338,9 @@ public class BOSS : MonoBehaviour
         BOSSsettings.SetValue("BOSS::showBurst", "False");
         BOSSsettings.SetValue("BOSS::showHelp", "False");
 
+        BOSSsettings.SetValue("BOSS::unitySkin", "true");
+        BOSSsettings.SetValue("BOSS::overrideLimiter", "false");
+
         BOSSsettings.SetValue("BOSS::screenshotKey", "z");
         BOSSsettings.SetValue("BOSS::showGUIKey", "p");
         BOSSsettings.SetValue("BOSS::supersampValue", "1");
@@ -368,7 +364,11 @@ public class BOSS : MonoBehaviour
         BOSSsettings.SetValue("BOSS::showFullUI", showFullUI.ToString());
         BOSSsettings.SetValue("BOSS::showUI", showUI.ToString());
         BOSSsettings.SetValue("BOSS::showBurst", showBurst.ToString());
-        BOSSsettings.SetValue("BOSS::showHelp", showFullUI.ToString());
+        BOSSsettings.SetValue("BOSS::showHelp", showHelp.ToString());
+
+        BOSSsettings.SetValue("BOSS::unitySkin", unitySkin.ToString());
+        BOSSsettings.SetValue("BOSS::overrideLimiter", overrideLimiter.ToString());
+
 
         BOSSsettings.SetValue("BOSS::screenshotKey", screenshotKey);
         BOSSsettings.SetValue("BOSS::showGUIKey", showGUIKey);
@@ -395,6 +395,10 @@ public class BOSS : MonoBehaviour
         showUI = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showUI"));
         showBurst = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showBurst"));
         showHelp = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showHelp"));
+
+        overrideLimiter = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::overrideLimiter"));
+        unitySkin = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::unitySkin"));
+
 
         screenshotKey = (BOSSsettings.GetValue("BOSS::screenshotKey"));
         showGUIKey = (BOSSsettings.GetValue("BOSS::showGUIKey"));
