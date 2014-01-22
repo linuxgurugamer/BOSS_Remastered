@@ -7,7 +7,7 @@
 
 Plugin Owner - Ted
 Contributors - Ted/SyNik4l
-Last Update - 1/21/2014
+Last Update - 1/22/2014
 Contact: synik4l@gmail.com/ted@squad.com.mx
 Forum Thread: http://forum.kerbalspaceprogram.com/threads/34631-0-23-Bolt-On-Screenshot-System-(BOSS)-v2-1-2
 Github Repo: https://github.com/SyNiK4L/BOSS or https://github.com/ZedsTed/BOSS_Remastered
@@ -41,6 +41,7 @@ change your supersampling value from one if the burst fire window is open. To us
 
 Plans
 --
+Change the screenshot key field to capture the key pressed instead of having the user type the keycode.
 Rebuild the whole thing in Trigger Au's framework. For cleaniness and fun.
 Recommendations are welcome.
 	
@@ -52,6 +53,7 @@ As you normally should. Fix coming soon.
 
 Changelog
 --
+v2.1.5 - Fixed linux/osx, problem writing to file bug. Fixed bug where user could change not the screenshot key.
 v2.1.4 - Fixed a couple random persistence bugs. UI should now persist throuh scene changes.
 v2.1.3 - Forked by SyNiK4L - added choosing of skins, burst shot mode, help window, cleaned up code a lot. Added saving of supersampling value.
 added to toolbar(http://forum.kerbalspaceprogram.com/threads/60863-0-23-0-Toolbar-1-4-0-Common-API-for-draggable-resizable-buttons-toolbar).)

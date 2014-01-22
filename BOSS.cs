@@ -50,6 +50,7 @@ public class BOSS : MonoBehaviour
         buttonsEnabled = true,
         overrideLimiter = false,
         showFullUI = false,
+        invalidkey = false,
         uiSaveDelay = false;
 
     public string burstTimeString = "1",
@@ -145,6 +146,7 @@ public class BOSS : MonoBehaviour
             if (Input.GetKeyDown(showGUIKey))
             {
                 showFullUI = !showFullUI;
+                showUI = !showUI;
                 toolbarButton.TexturePath = showFullUI ? "BOSS/bon" : "BOSS/boff";
                 saveSettings();
             }
@@ -152,7 +154,8 @@ public class BOSS : MonoBehaviour
         catch (UnityException e)
             //Catches the unity exception for a keycode that isnt a valid key. Updating the UI to let the user know.
         {
-           
+            if (!invalidkey)
+                invalidkey = true;
         }
     }
 
@@ -230,13 +233,27 @@ public class BOSS : MonoBehaviour
             Event.current.keyCode != KeyCode.Backspace ||
             Event.current.type == EventType.keyDown && GUI.GetNameOfFocusedControl() == "currentkey" &&
             Event.current.keyCode != KeyCode.Backspace)
-            saveSettings();
+        {
+            invalidkey = false;
+            uiSaveDelay = true;
+            UISave();
+        }
+           
 
         GUILayout.BeginVertical();
 
         GUILayout.Label("Current screenshot key: ", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
         GUI.SetNextControlName("currentkey");
         screenshotKey = GUILayout.TextField(screenshotKey);
+        GUILayout.EndVertical();
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+        if (invalidkey)
+        {
+            GUILayout.Label("INVALID KEY!", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
+        }
+        GUILayout.EndHorizontal();
+        GUILayout.BeginVertical();
         GUILayout.Label("Supersample value: ");
 
         if (!int.TryParse(superSampleValueString, out superSampleValueInt)) superSampleValueString = " ";
