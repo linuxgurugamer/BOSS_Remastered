@@ -152,7 +152,7 @@ public class BOSS : MonoBehaviour
         catch (UnityException e)
             //Catches the unity exception for a keycode that isnt a valid key. Updating the UI to let the user know.
         {
-            if (screenshotKey != "invalid" || screenshotKey != "") screenshotKey = "invalid";
+           
         }
     }
 
