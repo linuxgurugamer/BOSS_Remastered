@@ -33,7 +33,7 @@ public class BOSS : MonoBehaviour
 {
     //Using this method to get the boss folder gives you a cleaner path to it. As the KSPUtils class gets paths that like this C:\KSP_Root\ksp_data\..\
     private readonly string kspPluginDataFldr =
-        System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\PluginData\BOSS\";
+        System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"/PluginData/BOSS/";
 
     public BOSSSettings BOSSsettings = new BOSSSettings();
     protected Rect BurstPos, helpWindowPos, showUIPos;

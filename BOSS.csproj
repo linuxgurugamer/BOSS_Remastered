@@ -35,11 +35,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\Desktop\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-UnityScript">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program\KSP_Data\Managed\Assembly-UnityScript.dll</HintPath>
+      <HintPath>..\..\Desktop\Assembly-UnityScript.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -54,11 +54,11 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Toolbar">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program\GameData\000_Toolbar\Toolbar.dll</HintPath>
+      <HintPath>..\..\Downloads\Toolbar-1.4.2\GameData\000_Toolbar\Toolbar.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\SteamApps\common\Kerbal Space Program\KSP_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\Desktop\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -66,20 +66,6 @@
     <Compile Include="KSPConstants.cs" />
     <Compile Include="pluginSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AntiAliaser\AntiAliaser.csproj">
-      <Project>{9d711cd3-1dc5-49f5-912d-c41b98b984f3}</Project>
-      <Name>AntiAliaser</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ConsoleApplication1\Test Aliaser.csproj">
-      <Project>{ac65d127-5850-4afb-b4b2-77141c9d90e9}</Project>
-      <Name>Test Aliaser</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SkiptoRocket\SkiptoRocket.csproj">
-      <Project>{015713c9-e7f5-4e2e-a45c-cf18de22e7a3}</Project>
-      <Name>SkiptoRocket</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BOSS.cs">
