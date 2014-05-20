@@ -16,3 +16,9 @@ C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\bin\Debug\BOSS.pd
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.dll
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.pdb
 C:\Users\Corey\documents\visual studio 2012\Projects\BOSS\BOSS\obj\Debug\BOSS.csprojResolveAssemblyReference.cache
+C:\Users\Ted\Documents\GitHub\BOSS_Remastered\bin\Debug\BOSS.dll
+C:\Users\Ted\Documents\GitHub\BOSS_Remastered\bin\Debug\BOSS.pdb
+C:\Users\Ted\Documents\GitHub\BOSS_Remastered\bin\Debug\Toolbar.dll
+C:\Users\Ted\Documents\GitHub\BOSS_Remastered\obj\Debug\BOSS.csprojResolveAssemblyReference.cache
+C:\Users\Ted\Documents\GitHub\BOSS_Remastered\obj\Debug\BOSS.dll
+C:\Users\Ted\Documents\GitHub\BOSS_Remastered\obj\Debug\BOSS.pdb

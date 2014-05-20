@@ -3,7 +3,7 @@
 
 Plugin Owner - Ted
 Contributors - Ted/SyNik4l
-Last Update - 1/19/2014
+Last Update - 2014-05-20
 Contact: synik4l@gmail.com/ted@squad.com.mx
 Forum Thread: http://forum.kerbalspaceprogram.com/threads/34631-0-23-Bolt-On-Screenshot-System-(BOSS)-v2-1-2
 Github Repo: https://github.com/SyNiK4L/BOSS or https://github.com/ZedsTed/BOSS_Remastered
@@ -49,6 +49,7 @@ As you normally should. Fix coming soon.
 
 Changelog
 --
+v2.1.6 - Updated for 0.23.5 compatibility.
 v2.1.5 - Fixed linux/osx, problem writing to file bug. Fixed bug where user could change not the screenshot key.
 v2.1.4 - Fixed a couple random persistence bugs. UI should now persist throuh scene changes.
 v2.1.3 - Forked by SyNiK4L - added choosing of skins, burst shot mode, help window, cleaned up code a lot. Added saving of supersampling value.
