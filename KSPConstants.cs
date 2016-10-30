@@ -1,8 +1,10 @@
-﻿public static class KSPConstants
+﻿namespace BOSS
 {
-    public static string getHelpText()
+    public static class KSPConstants
     {
-        string text = @"Bolt On Screenshot System
+        public static string getHelpText()
+        {
+            string text = @"Bolt On Screenshot System
 ==
 
 Plugin Owner - Ted
@@ -330,6 +332,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with The Bolt-On Screenshot System.  If not, see <http://www.gnu.org/licenses/>.";
-        return text;
+            return text;
+        }
     }
 }

@@ -1,36 +1,62 @@
 ﻿using KSP.IO;
 
-
-public class BOSSSettings
+namespace BOSS
 {
-    PluginConfiguration pluginsettings = PluginConfiguration.CreateForType<BOSS>(null);
-
-    public void Create()
-    { 
-        
-    }
-
-    public void Load()
+    public class BOSSSettings
     {
+        ConfigNode configFile;
+        ConfigNode configFileNode;
 
-        pluginsettings.load();
-    }
+        //PluginConfiguration pluginsettings = PluginConfiguration.CreateForType<BOSS>(null);
 
-    public void Save()
-    {
-        pluginsettings.save();
-    }
+        public void Create()
+        {
+            if (configFileNode == null)
+            {
+                configFile = new ConfigNode();
+            }
+            if (!configFile.HasNode("BOSS"))
+            {
+                configFileNode = new ConfigNode("BOSS");
+                configFile.SetNode("BOSS", configFileNode, true);
+            }
+            else
+            {
+                if (configFileNode == null)
+                {
+                    configFileNode = configFile.GetNode("BOSS");
+                    //if (configFileNode == null)
+                        //print("configFileNode is null");
 
-    public void SetValue(string name, string value)
-    {
-        pluginsettings.SetValue(name, value);
-    }
+                }
+            }            
+        }
 
-    public string GetValue(string name)
-    {
+        public bool Load()
+        {
+            configFile = ConfigNode.Load(KSPUtil.ApplicationRootPath + "GameData/BOSS/PluginData/BOSS.cfg");
+            return configFile != null;
+            //pluginsettings.load();
+        }
 
-        return pluginsettings.GetValue<string>(name);
+        public void Save()
+        {
+            configFile.Save(KSPUtil.ApplicationRootPath + "GameData/BOSS/PluginData/BOSS.cfg");
+            //pluginsettings.save();
+        }
+
+        public void SetValue(string name, string value)
+        {
+            name = name.Substring(6, name.Length - 6);
+            //pluginsettings.SetValue(name, value);
+            configFileNode.SetValue(name, value, true);
+        }
+
+        public string GetValue(string name)
+        {
+            name = name.Substring(6, name.Length - 6);
+            return configFileNode.GetValue(name);
+            //return pluginsettings.GetValue<string>(name);
+        }
     }
 }
-
-

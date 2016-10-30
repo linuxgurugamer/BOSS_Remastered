@@ -1,6 +1,17 @@
 ﻿Bolt On Screenshot System
 ==
 
+ChangeLog for Continued version
+
+3.0.0	updated for 1.2
+		Moved config data into BOSS/PluginData
+		Changed config style from xml to cfg
+		Added ToolbarWrapper.cs
+		Added ability to use either standard toolbar or Blizzy toolbar
+		Changed screenshot save directory to standard screenshots directory
+
+====== Following is from the old version ================
+
 Plugin Owner - Ted
 Contributors - Ted/SyNik4l
 Last Update - 2014-05-20
