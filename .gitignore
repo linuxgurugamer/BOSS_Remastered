@@ -57,3 +57,6 @@ _ReSharper*/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+*.dll
+*.pdb

@@ -1,4 +1,5 @@
-﻿using KSP.IO;
+﻿
+using UnityEngine;
 
 namespace BOSS
 {
@@ -26,15 +27,17 @@ namespace BOSS
                 {
                     configFileNode = configFile.GetNode("BOSS");
                     //if (configFileNode == null)
-                        //print("configFileNode is null");
+                    //print("configFileNode is null");
 
                 }
-            }            
+            }
         }
 
         public bool Load()
         {
             configFile = ConfigNode.Load(KSPUtil.ApplicationRootPath + "GameData/BOSS/PluginData/BOSS.cfg");
+            if (configFile != null)
+                configFileNode = configFile.GetNode("BOSS");
             return configFile != null;
             //pluginsettings.load();
         }
@@ -54,8 +57,14 @@ namespace BOSS
 
         public string GetValue(string name)
         {
+            string s = "";
+            if (name == null)
+                return "";
             name = name.Substring(6, name.Length - 6);
-            return configFileNode.GetValue(name);
+            if (configFileNode.HasValue(name))
+                s = configFileNode.GetValue(name);
+           
+            return s;
             //return pluginsettings.GetValue<string>(name);
         }
     }

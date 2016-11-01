@@ -45,7 +45,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="readme.txt" />
+    <Content Include="ReadmeAndLicense.txt" />
     <Content Include="Resources\boff.png" />
     <Content Include="Resources\bon.png" />
   </ItemGroup>

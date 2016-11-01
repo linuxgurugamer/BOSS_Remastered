@@ -575,7 +575,7 @@ namespace BOSS
             if (BOSSsettings.Load() == false)
                 createSettings();
             BurstPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::BurstPos.x"));
-            BurstPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSSp::BurstPos.y"));
+            BurstPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSS::BurstPos.y"));
             helpWindowPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::helpWindowPos.x"));
             helpWindowPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSS::helpWindowPos.y"));
             showUIPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::showUIPos.x"));

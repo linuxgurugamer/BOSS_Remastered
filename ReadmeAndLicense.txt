@@ -9,6 +9,8 @@ ChangeLog for Continued version
 		Added ToolbarWrapper.cs
 		Added ability to use either standard toolbar or Blizzy toolbar
 		Changed screenshot save directory to standard screenshots directory
+3.0.1
+		Fixed issue reading config file, was causing Nullrefs
 
 ====== Following is from the old version ================
 
