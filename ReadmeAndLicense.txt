@@ -12,6 +12,10 @@ ChangeLog for Continued version
 3.0.1
 		Fixed issue reading config file, was causing Nullrefs
 
+3.0.2
+		Changed screenshot key to ALT+standard screenshot key
+		Fixed SuperSize code to properly check for file
+
 ====== Following is from the old version ================
 
 Plugin Owner - Ted

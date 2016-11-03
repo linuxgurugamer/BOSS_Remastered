@@ -67,7 +67,7 @@ namespace BOSS
 
         public string burstTimeString = "1",
             helpContent = "",
-            screenshotKey = "z",
+            // screenshotKey = "F1",
             burstIntervalString = "1",
             showGUIKey = "p",
             superSampleValueString = "1";
@@ -221,7 +221,10 @@ namespace BOSS
             }
             try
             {
-                if (buttonsEnabled && Input.GetKeyDown(screenshotKey))
+               
+
+                if (buttonsEnabled && GameSettings.TAKE_SCREENSHOT.GetKey() && (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt)))
+                    //Input.GetKeyDown(screenshotKey))
                 {
                     if (showBurst)
                     {
@@ -334,8 +337,9 @@ namespace BOSS
             GUILayout.BeginVertical();
 
             GUILayout.Label("Current screenshot key: ", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
-            GUI.SetNextControlName("currentkey");
-            screenshotKey = GUILayout.TextField(screenshotKey);
+            //GUI.SetNextControlName("currentkey");
+            //screenshotKey = GUILayout.TextField(screenshotKey);
+            GUILayout.Label("Alt-" + GameSettings.TAKE_SCREENSHOT.name);
             GUILayout.EndVertical();
             GUILayout.BeginHorizontal();
             GUILayout.Space(30);
@@ -470,9 +474,9 @@ namespace BOSS
                 bool exists = false;
                 var b = o as BackgroundWorker;
                 while (exists == false)
-                {
+                {                    
                     Thread.Sleep(500);
-                    if (File.Exists(screenshotDir + shotname))
+                    if (File.Exists(shotname))
                     {
                         exists = true;
                         buttonsEnabled = true;
@@ -526,7 +530,7 @@ namespace BOSS
             BOSSsettings.SetValue("BOSS::unitySkin", "true");
             BOSSsettings.SetValue("BOSS::overrideLimiter", "false");
 
-            BOSSsettings.SetValue("BOSS::screenshotKey", "z");
+            //BOSSsettings.SetValue("BOSS::screenshotKey", "F1");
             BOSSsettings.SetValue("BOSS::showGUIKey", "p");
             BOSSsettings.SetValue("BOSS::supersampValue", "1");
             BOSSsettings.SetValue("BOSS::burstTime", "1");
@@ -557,7 +561,7 @@ namespace BOSS
             BOSSsettings.SetValue("BOSS::overrideLimiter", overrideLimiter.ToString());
 
 
-            BOSSsettings.SetValue("BOSS::screenshotKey", screenshotKey);
+            //BOSSsettings.SetValue("BOSS::screenshotKey", screenshotKey);
             BOSSsettings.SetValue("BOSS::showGUIKey", showGUIKey);
             BOSSsettings.SetValue("BOSS::supersampValue", superSampleValueString);
             BOSSsettings.SetValue("BOSS::burstTime", burstTime.ToString());
@@ -591,7 +595,7 @@ namespace BOSS
             unitySkin = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::unitySkin"));
 
 
-            screenshotKey = (BOSSsettings.GetValue("BOSS::screenshotKey"));
+            //screenshotKey = (BOSSsettings.GetValue("BOSS::screenshotKey"));
             showGUIKey = (BOSSsettings.GetValue("BOSS::showGUIKey"));
             superSampleValueString = (BOSSsettings.GetValue("BOSS::supersampValue"));
             burstTime = Convert.ToInt32(BOSSsettings.GetValue("BOSS::burstTime"));
