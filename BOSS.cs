@@ -52,6 +52,8 @@ namespace BOSS
         private bool useToolbarIfAvailable = false;
         private IButton toolbarButton;
         private ApplicationLauncherButton AppLauncherButton;
+        KeyCode takeScreenshotKey = KeyCode.F1;
+        KeyCode modifier = KeyCode.LeftAlt;
 
         Texture2D bon_38, boff_38;
 
@@ -71,6 +73,11 @@ namespace BOSS
             burstIntervalString = "1",
             showGUIKey = "p",
             superSampleValueString = "1";
+
+        KeyCode _lastKeyPressed = KeyCode.None;
+        KeyCode _lastNonModKeyPressed = KeyCode.None;
+        KeyCode _lastModifier = KeyCode.None;
+        string keyMapToUpdate = string.Empty;
 
         void Start()
         {
@@ -96,8 +103,22 @@ namespace BOSS
             // RenderingManager.AddToPostDrawQueue(60, drawGUI);
         }
 
+        bool isModifier(KeyCode c)
+        {
+            return (c == KeyCode.LeftAlt || c == KeyCode.RightAlt || c == KeyCode.LeftCommand || c == KeyCode.RightCommand || c == KeyCode.LeftControl || c == KeyCode.RightControl);
+        }
         void LateUpdate()
         {
+            if (Event.current.isKey)
+            {
+                KeyCode c = Event.current.keyCode;
+                _lastKeyPressed = c;
+
+                if (isModifier(c))
+                    _lastModifier = c;
+                else
+                    _lastNonModKeyPressed = c;
+            }
             if (toolbarButton == null && AppLauncherButton == null)
                 initToolbar();
         }
@@ -170,7 +191,7 @@ namespace BOSS
                             t
                         );
 
-                      
+
                     }
                 }
                 if (this.toolbarButton != null)
@@ -221,10 +242,11 @@ namespace BOSS
             }
             try
             {
-               
 
-                if (buttonsEnabled && GameSettings.TAKE_SCREENSHOT.GetKey() && (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt)))
-                    //Input.GetKeyDown(screenshotKey))
+
+                if (buttonsEnabled && Input.GetKey(takeScreenshotKey) && (modifier == KeyCode.None || Input.GetKey(modifier)))
+                //                    Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt)))
+                //Input.GetKeyDown(screenshotKey))
                 {
                     if (showBurst)
                     {
@@ -332,14 +354,40 @@ namespace BOSS
                 uiSaveDelay = true;
                 UISave();
             }
-
-
             GUILayout.BeginVertical();
+            if (keyMapToUpdate == string.Empty)
+            {
+                GUILayout.Label("Click button and press key to change");
+            }
+            else
+            {
+                GUILayout.Label("Waiting for key");
+            }
+            GUILayout.EndVertical();
+            GUILayout.BeginVertical();
+            GUILayout.Label("Last key pressed: " + _lastNonModKeyPressed.ToString());
 
+            GUILayout.EndVertical();
+            GUILayout.BeginVertical();
             GUILayout.Label("Current screenshot key: ", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
             //GUI.SetNextControlName("currentkey");
             //screenshotKey = GUILayout.TextField(screenshotKey);
-            GUILayout.Label("Alt-" + GameSettings.TAKE_SCREENSHOT.name);
+            if (keyMapToUpdate == "ts" && _lastKeyPressed != KeyCode.None)
+            {
+                if (!isModifier(_lastKeyPressed))
+                {
+                    modifier = _lastModifier;
+                    takeScreenshotKey = _lastNonModKeyPressed;
+                    keyMapToUpdate = "";
+                }
+
+            }
+            if (GUILayout.Button(modifier.ToString() + "+" + takeScreenshotKey.ToString()))
+            {
+                _lastNonModKeyPressed = KeyCode.None;
+                _lastModifier = KeyCode.None;
+                keyMapToUpdate = "ts";
+            }
             GUILayout.EndVertical();
             GUILayout.BeginHorizontal();
             GUILayout.Space(30);
@@ -378,8 +426,8 @@ namespace BOSS
 
             bool newshowBurst = GUILayout.Toggle(showBurst, "Toggle Burst", GUILayout.ExpandWidth(true));
             if (newshowBurst != showBurst)
-                //&& Event.current.type == EventType.Repaint &&
-                //GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition) && !uiSaveDelay)
+            //&& Event.current.type == EventType.Repaint &&
+            //GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition) && !uiSaveDelay)
             {
                 showBurst = newshowBurst;
                 uiSaveDelay = true;
@@ -388,8 +436,8 @@ namespace BOSS
 
             bool newshowHelp = GUILayout.Toggle(showHelp, "Toggle Help", GUILayout.ExpandWidth(true));
             if (newshowHelp != showHelp)
-                //&& Event.current.type == EventType.Repaint &&
-                //GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition) && !uiSaveDelay)
+            //&& Event.current.type == EventType.Repaint &&
+            //GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition) && !uiSaveDelay)
             {
                 showHelp = newshowHelp;
                 uiSaveDelay = true;
@@ -399,8 +447,8 @@ namespace BOSS
 
             bool newuseToolbarIfAvailable = GUILayout.Toggle(useToolbarIfAvailable, "Use Toolbar", GUILayout.ExpandWidth(true));
             if (newuseToolbarIfAvailable != useToolbarIfAvailable)
-                //&& Event.current.type == EventType.Repaint &&
-                //GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition) && !uiSaveDelay)
+            //&& Event.current.type == EventType.Repaint &&
+            //GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition) && !uiSaveDelay)
             {
                 useToolbarIfAvailable = newuseToolbarIfAvailable;
                 uiSaveDelay = true;
@@ -474,7 +522,7 @@ namespace BOSS
                 bool exists = false;
                 var b = o as BackgroundWorker;
                 while (exists == false)
-                {                    
+                {
                     Thread.Sleep(500);
                     if (File.Exists(shotname))
                     {
@@ -530,13 +578,15 @@ namespace BOSS
             BOSSsettings.SetValue("BOSS::unitySkin", "true");
             BOSSsettings.SetValue("BOSS::overrideLimiter", "false");
 
-            //BOSSsettings.SetValue("BOSS::screenshotKey", "F1");
             BOSSsettings.SetValue("BOSS::showGUIKey", "p");
             BOSSsettings.SetValue("BOSS::supersampValue", "1");
             BOSSsettings.SetValue("BOSS::burstTime", "1");
             BOSSsettings.SetValue("BOSS::burstInterval", "1");
 
             BOSSsettings.SetValue("BOSS::useToolbarIfAvailable", "False");
+
+            BOSSsettings.SetValue("BOSS::takeScreenshotKey", ((int)takeScreenshotKey).ToString());
+            BOSSsettings.SetValue("BOSS::modifier", ((int)modifier).ToString());
 
             BOSSsettings.Save();
             print("Created BOSS settings.");
@@ -560,15 +610,16 @@ namespace BOSS
             BOSSsettings.SetValue("BOSS::unitySkin", unitySkin.ToString());
             BOSSsettings.SetValue("BOSS::overrideLimiter", overrideLimiter.ToString());
 
-
-            //BOSSsettings.SetValue("BOSS::screenshotKey", screenshotKey);
             BOSSsettings.SetValue("BOSS::showGUIKey", showGUIKey);
             BOSSsettings.SetValue("BOSS::supersampValue", superSampleValueString);
             BOSSsettings.SetValue("BOSS::burstTime", burstTime.ToString());
             BOSSsettings.SetValue("BOSS::burstInterval", burstInterval.ToString());
 
             BOSSsettings.SetValue("BOSS::useToolbarIfAvailable", useToolbarIfAvailable.ToString());
-            
+
+            BOSSsettings.SetValue("BOSS::takeScreenshotKey", ((int)takeScreenshotKey).ToString());
+            BOSSsettings.SetValue("BOSS::modifier", ((int)modifier).ToString());
+
 
             BOSSsettings.Save();
             print("Saved BOSS settings.");
@@ -578,31 +629,171 @@ namespace BOSS
         {
             if (BOSSsettings.Load() == false)
                 createSettings();
-            BurstPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::BurstPos.x"));
-            BurstPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSS::BurstPos.y"));
-            helpWindowPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::helpWindowPos.x"));
-            helpWindowPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSS::helpWindowPos.y"));
-            showUIPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::showUIPos.x"));
-            showUIPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSS::showUIPos.y"));
-            screenshotCount = Convert.ToInt32(BOSSsettings.GetValue("BOSS::screenshotCount"));
+            try {
+                BurstPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::BurstPos.x"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading BurstPos.x: " + e.Message);
+            }
+            try
+            {
+                BurstPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSS::BurstPos.y"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading BurstPos.y: " + e.Message);
+            }
+            try
+            {
+                helpWindowPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::helpWindowPos.x"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading helpWindowPos.x: " + e.Message);
+            }
+            try
+            {
+                helpWindowPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSS::helpWindowPos.y"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading helpWindowPos.y: " + e.Message);
+            }
+            try
+            {
+                showUIPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::showUIPos.x"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading showUIPos.x: " + e.Message);
+            }
+            try
+            {
+                showUIPos.y = Convert.ToSingle(BOSSsettings.GetValue("BOSS::showUIPos.y"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading showUIPos.y: " + e.Message);
+            }
+            try
+            {
+                screenshotCount = Convert.ToInt32(BOSSsettings.GetValue("BOSS::screenshotCount"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading screenshotCount: " + e.Message);
+            }
 
-            showFullUI = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showFullUI"));
-            showUI = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showUI"));
-            showBurst = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showBurst"));
-            showHelp = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showHelp"));
+            try
+            {
+                showFullUI = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showFullUI"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading showFullUI: " + e.Message);
+            }
+            try
+            {
+                showUI = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showUI"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading showUI: " + e.Message);
+            }
+            try
+            {
+                showBurst = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showBurst"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading showBurst: " + e.Message);
+            }
+            try
+            {
+                showHelp = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showHelp"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading showHelp: " + e.Message);
+            }
 
-            overrideLimiter = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::overrideLimiter"));
-            unitySkin = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::unitySkin"));
+            try
+            {
+                overrideLimiter = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::overrideLimiter"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading overrideLimiter: " + e.Message);
+            }
+            try
+            {
+                unitySkin = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::unitySkin"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading unitySkin: " + e.Message);
+            }
 
+            try
+            {
+                showGUIKey = (BOSSsettings.GetValue("BOSS::showGUIKey"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading showGUIKey: " + e.Message);
+            }
+            try
+            {
+                superSampleValueString = (BOSSsettings.GetValue("BOSS::supersampValue"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading superSampleValueString: " + e.Message);
+            }
+            try
+            {
+                burstTime = Convert.ToInt32(BOSSsettings.GetValue("BOSS::burstTime"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading burstTime: " + e.Message);
+            }
+            try
+            {
+                burstInterval = Convert.ToDouble(BOSSsettings.GetValue("BOSS::burstInterval"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading burstInterval: " + e.Message);
+            }
 
-            //screenshotKey = (BOSSsettings.GetValue("BOSS::screenshotKey"));
-            showGUIKey = (BOSSsettings.GetValue("BOSS::showGUIKey"));
-            superSampleValueString = (BOSSsettings.GetValue("BOSS::supersampValue"));
-            burstTime = Convert.ToInt32(BOSSsettings.GetValue("BOSS::burstTime"));
-            burstInterval = Convert.ToDouble(BOSSsettings.GetValue("BOSS::burstInterval"));
+            try
+            {
+                useToolbarIfAvailable = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::useToolbarIfAvailable"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading useToolbarIfAvailable: " + e.Message);
+            }
 
-            useToolbarIfAvailable = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::useToolbarIfAvailable"));
-            
+            try
+            {
+                takeScreenshotKey = (KeyCode)Convert.ToInt32(BOSSsettings.GetValue("BOSS::takeScreenshotKey"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading takeScreenshotKey: " + e.Message);
+            }
+            try
+            {
+                modifier = (KeyCode)Convert.ToInt32(BOSSsettings.GetValue("BOSS::modifier"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Exception loading modifier: " + e.Message);
+            }
+
             print("Loaded BOSS settings.");
         }
     }

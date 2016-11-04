@@ -16,6 +16,10 @@ ChangeLog for Continued version
 		Changed screenshot key to ALT+standard screenshot key
 		Fixed SuperSize code to properly check for file
 
+3.0.3
+		Added configurable screenshot key
+		Added checking for invalid values while loading from config file
+
 ====== Following is from the old version ================
 
 Plugin Owner - Ted
