@@ -491,7 +491,7 @@ namespace BOSS
             saveSettings();
             uiSaveDelay = false;
             return;
-
+#if false
             var bw = new BackgroundWorker();
 
             bw.WorkerReportsProgress = true;
@@ -507,6 +507,7 @@ namespace BOSS
             bw.RunWorkerCompleted += delegate { uiSaveDelay = false; };
 
             bw.RunWorkerAsync();
+#endif
         }
 
 

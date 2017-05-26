@@ -1,5 +1,5 @@
 ﻿@echo on
-set H=R:\KSP_1.1.4_dev
+set H=R:\KSP_1.3.0_dev
 echo %H%
 
 copy /y bin\Debug\BOSS.dll GameData\BOSS\Plugins

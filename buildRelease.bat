@@ -28,18 +28,35 @@ if "%_test%" == ":" (
 set HOMEDRIVE=%HOMEDIR:~0,2%
 )
 
-type BOSSContinued.version
-set /p VERSION= "Enter version: "
 
 
-rmdir /s /q %HOMEDIR%\install\Gamedata\BOSS
+set VERSIONFILE=BOSSContinued.version
+rem The following requires the JQ program, available here: https://stedolan.github.io/jq/download/
+c:\local\jq-win64  ".VERSION.MAJOR" %VERSIONFILE% >tmpfile
+set /P major=<tmpfile
 
-xcopy /Y /E GameData\BOSS %HOMEDIR%\install\Gamedata\BOSS
-copy ..\MiniAVC.dll %HOMEDIR%\install\Gamedata\BOSS
-copy ReadmeAndLicense.txt %HOMEDIR%\install\Gamedata\BOSS
+c:\local\jq-win64  ".VERSION.MINOR"  %VERSIONFILE% >tmpfile
+set /P minor=<tmpfile
 
-%HOMEDRIVE%
-cd %HOMEDIR%\install
+c:\local\jq-win64  ".VERSION.PATCH"  %VERSIONFILE% >tmpfile
+set /P patch=<tmpfile
+
+c:\local\jq-win64  ".VERSION.BUILD"  %VERSIONFILE% >tmpfile
+set /P build=<tmpfile
+del tmpfile
+set VERSION=%major%.%minor%.%patch%
+if "%build%" NEQ "0"  set VERSION=%VERSION%.%build%
+
+
+echo %VERSION%
+pause
+
+
+
+xcopy /Y /E GameData\BOSS Gamedata\BOSS
+copy ..\MiniAVC.dll Gamedata\BOSS
+copy ReadmeAndLicense.txt Gamedata\BOSS
+
 
 set FILE="%RELEASEDIR%\BOSS-%VERSION%.zip"
 IF EXIST %FILE% del /F %FILE%
