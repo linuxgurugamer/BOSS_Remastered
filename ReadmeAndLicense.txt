@@ -23,6 +23,9 @@ ChangeLog for Continued version
 3.1.0
 		Updated for 1.3
 
+3.1.1
+		Updated for 1.3.1
+
 ====== Following is from the old version ================
 
 Plugin Owner - Ted

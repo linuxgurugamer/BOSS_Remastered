@@ -1,25 +1,25 @@
 ﻿{
   "NAME": "BOSSContinued",
-  "URL": "http://ksp-avc.cybutek.net/version.php?id=377",
+  "URL": "https://raw.githubusercontent.com/linuxgurugamer/BOSS_Remastered/master/BOSSContinued.version",
   "VERSION": {
     "MAJOR": 3,
     "MINOR": 1,
-    "PATCH": 0,
+    "PATCH": 1,
     "BUILD": 0
   },
   "KSP_VERSION": {
     "MAJOR": 1,
     "MINOR": 3,
-    "PATCH": 0
+    "PATCH": 1
   },
   "KSP_VERSION_MIN": {
     "MAJOR": 1,
     "MINOR": 3,
-    "PATCH": 0
+    "PATCH": 1
   },
   "KSP_VERSION_MAX": {
     "MAJOR": 1,
     "MINOR": 3,
-    "PATCH": 99
+    "PATCH": 1
   }
 }
