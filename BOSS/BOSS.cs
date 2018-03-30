@@ -30,6 +30,9 @@ using UnityEngine;
 //using File = KSP.IO.File;
 using KSP.UI.Screens;
 
+using ClickThroughFix;
+using ToolbarControl_NS;
+
 
 namespace BOSS
 {
@@ -51,11 +54,13 @@ namespace BOSS
         private double burstInterval = 1;
         private bool useToolbarIfAvailable = false;
         private IButton toolbarButton;
-        private ApplicationLauncherButton AppLauncherButton;
+        //private ApplicationLauncherButton AppLauncherButton;
+        ToolbarControl toolbarControl = null;
+
         KeyCode takeScreenshotKey = KeyCode.F1;
         KeyCode modifier = KeyCode.LeftAlt;
 
-        Texture2D bon_38, boff_38;
+        //Texture2D bon_38, boff_38;
 
         public bool showBurst = false,
             showHelp = false,
@@ -81,11 +86,13 @@ namespace BOSS
 
         void Start()
         {
+            initToolbar();
             DontDestroyOnLoad(this);
         }
 
         public void Awake()
         {
+#if false
             if (!File.Exists(kspPluginDataFldr + "config.xml"))
             {
                 try
@@ -97,6 +104,7 @@ namespace BOSS
                     throw new AccessViolationException("Can't create settings file, please confirm directory is writeable.");
                 }
             }
+#endif
             helpContent = KSPConstants.getHelpText();
             loadSettings();
             // initToolbar();
@@ -119,7 +127,8 @@ namespace BOSS
                 else
                     _lastNonModKeyPressed = c;
             }
-            if (toolbarButton == null && AppLauncherButton == null)
+
+//            if (toolbarButton == null && AppLauncherButton == null)
                 initToolbar();
         }
 
@@ -127,10 +136,12 @@ namespace BOSS
         {
             //bon = GameDatabase.Instance.GetTexture("BOSS/Resources/bon", false);
             //boff = GameDatabase.Instance.GetTexture("BOSS/Resources/boff", false);
+#if false
             if (bon_38 == null)
                 bon_38 = GameDatabase.Instance.GetTexture("BOSS/Resources/bon_38", false);
             if (boff_38 == null)
                 boff_38 = GameDatabase.Instance.GetTexture("BOSS/Resources/boff_38", false);
+
 
             if (ToolbarManager.ToolbarAvailable && useToolbarIfAvailable)
             {
@@ -173,7 +184,9 @@ namespace BOSS
 
             }
             else
+#endif
             {
+#if false
                 if (this.AppLauncherButton == null)
                 {
                     if (ApplicationLauncher.Instance != null)
@@ -194,41 +207,58 @@ namespace BOSS
 
                     }
                 }
-                if (this.toolbarButton != null)
+#endif
+                if (this.toolbarControl == null)
                 {
-                    this.toolbarButton.Destroy();
-                    this.toolbarButton = null;
-                }
+                    toolbarControl = gameObject.AddComponent<ToolbarControl>();
+                    toolbarControl.AddToAllToolbars(ToggleMainWindow, ToggleMainWindow,
+                        ApplicationLauncher.AppScenes.ALWAYS,
+                        "FlightPlan_NS",
+                        "flightPlanButton",
+                        "BOSS/Resources/bon_38",
+                        "BOSS/Resources/boff_38",
+                        "BOSS/Resources/bon_24",
+                        "BOSS/Resources/boff_24",
+                        "Bolt-On Screenshot System"
+                    );
+                    toolbarControl.UseBlizzy(useToolbarIfAvailable);
 
+                }
+                
             }
         }
         void ToggleMainWindow()
         {
             showFullUI = !showFullUI;
             showUI = !showUI;
+#if false
             if (showUI)
                 this.AppLauncherButton.SetTexture(bon_38);
             else
                 this.AppLauncherButton.SetTexture(boff_38);
+#endif
         }
 
         //private void drawGUI()
         void OnGUI()
         {
+            if (toolbarControl != null)
+                toolbarControl.UseBlizzy(useToolbarIfAvailable);
+
             if (unitySkin) GUI.skin = null;
             else GUI.skin = HighLogic.Skin;
             if (showFullUI)
             {
                 if (showUI)
-                    showUIPos = GUILayout.Window(568, showUIPos, UIContent, "B.O.S.S. Control", GUILayout.Width(150),
+                    showUIPos = ClickThruBlocker.GUILayoutWindow(568, showUIPos, UIContent, "B.O.S.S. Control", GUILayout.Width(150),
                         GUILayout.Height(150));
 
                 if (showHelp)
-                    helpWindowPos = GUILayout.Window(570, helpWindowPos, UIContentHelp, "Help!!!", GUILayout.Width(400),
+                    helpWindowPos = ClickThruBlocker.GUILayoutWindow(570, helpWindowPos, UIContentHelp, "Help!!!", GUILayout.Width(400),
                         GUILayout.Height(400));
 
                 if (showBurst)
-                    BurstPos = GUILayout.Window(569, BurstPos, UIContentBurst, "Burst Control", GUILayout.Width(150),
+                    BurstPos = ClickThruBlocker.GUILayoutWindow(569, BurstPos, UIContentBurst, "Burst Control", GUILayout.Width(150),
                         GUILayout.Height(150));
             }
         }
@@ -453,7 +483,7 @@ namespace BOSS
                 useToolbarIfAvailable = newuseToolbarIfAvailable;
                 uiSaveDelay = true;
                 UISave();
-                initToolbar();
+               
             }
 
 
@@ -475,7 +505,8 @@ namespace BOSS
             print("Screenshot Count:" + screenshotCount);
             print(screenshotDir + screenshotFilename + ".png");
             print("Your supersample value was " + superSampleValueInt + "!");
-            Application.CaptureScreenshot(screenshotDir + screenshotFilename + ".png", superSampleValueInt);
+            ScreenCapture.CaptureScreenshot(screenshotDir + screenshotFilename + ".png", superSampleValueInt);
+
             if (superSampleValueInt > 1 && overrideLimiter != true)
             {
                 buttonsEnabled = false;

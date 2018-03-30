@@ -26,6 +26,13 @@ ChangeLog for Continued version
 3.1.1
 		Updated for 1.3.1
 
+3.1.2
+	Updated for 1.4.1/1.4.2
+	Added support for the ClickThroughBlocker
+	Added support for ToolbarController
+	Added check for missing PluginData directory, creates it if not found
+
+
 ====== Following is from the old version ================
 
 Plugin Owner - Ted
