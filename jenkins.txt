@@ -24,7 +24,7 @@
 # 0:1.3
 
 # 1:GAMEDIR, VERSIONFILE [, GITHUBREPO ]
-1:BOSS, BOSSContinued.version
+1:BOSS, BOSSContinued.version, BOSS_Remastered
 
 # 2:PROJNAME, PROJFILE, VERSIONFILE, PLUGINSFOLDER
 2:BOSS,BOSS/BOSS.csproj,BOSSContinued.version,GameData/BOSS/Plugins
