@@ -53,7 +53,7 @@ namespace BOSS
         public int screenshotCount, burstTime = 1, superSampleValueInt = 1;
         private double burstInterval = 1;
         private bool useToolbarIfAvailable = false;
-        private IButton toolbarButton;
+       // private IButton toolbarButton;
         //private ApplicationLauncherButton AppLauncherButton;
         ToolbarControl toolbarControl = null;
 
@@ -136,78 +136,9 @@ namespace BOSS
         {
             //bon = GameDatabase.Instance.GetTexture("BOSS/Resources/bon", false);
             //boff = GameDatabase.Instance.GetTexture("BOSS/Resources/boff", false);
-#if false
-            if (bon_38 == null)
-                bon_38 = GameDatabase.Instance.GetTexture("BOSS/Resources/bon_38", false);
-            if (boff_38 == null)
-                boff_38 = GameDatabase.Instance.GetTexture("BOSS/Resources/boff_38", false);
 
-
-            if (ToolbarManager.ToolbarAvailable && useToolbarIfAvailable)
             {
-                if (toolbarButton == null)
-                {
-                    toolbarButton = ToolbarManager.Instance.add("BOSS", "toolbarButton");
-                    toolbarButton.Text = "BOSS";
-                    toolbarButton.Visible = true;
 
-                    if (showFullUI)
-                        toolbarButton.TexturePath = "BOSS/Resources/bon";
-                    else
-                        toolbarButton.TexturePath = "BOSS/Resources/boff";
-
-                    toolbarButton.ToolTip = "Toggle Bolt-On Screenshot System";
-                    toolbarButton.OnClick += e =>
-                    {
-                        if (showFullUI)
-                        {
-                            showFullUI = false;
-                            showUI = false;
-                        }
-                        else if (!showFullUI)
-                        {
-                            showUI = true;
-                            showFullUI = true;
-                        }
-                        if (showFullUI)
-                            toolbarButton.TexturePath = "BOSS/Resources/bon";
-                        else
-                            toolbarButton.TexturePath = "BOSS/Resources/boff";
-                        saveSettings();
-                    };
-                }
-                if (this.AppLauncherButton != null)
-                {
-                    ApplicationLauncher.Instance.RemoveModApplication(this.AppLauncherButton);
-                    this.AppLauncherButton = null;
-                }
-
-            }
-            else
-#endif
-            {
-#if false
-                if (this.AppLauncherButton == null)
-                {
-                    if (ApplicationLauncher.Instance != null)
-                    {
-                        Texture2D t;
-                        if (showFullUI)
-                            t = bon_38;
-                        else
-                            t = boff_38;
-                        this.AppLauncherButton = ApplicationLauncher.Instance.AddModApplication(
-                            this.ToggleMainWindow, this.ToggleMainWindow,
-                            null, null,
-                            null, null,
-                            ApplicationLauncher.AppScenes.ALWAYS,
-                            t
-                        );
-
-
-                    }
-                }
-#endif
                 if (this.toolbarControl == null)
                 {
                     toolbarControl = gameObject.AddComponent<ToolbarControl>();
@@ -231,12 +162,7 @@ namespace BOSS
         {
             showFullUI = !showFullUI;
             showUI = !showUI;
-#if false
-            if (showUI)
-                this.AppLauncherButton.SetTexture(bon_38);
-            else
-                this.AppLauncherButton.SetTexture(boff_38);
-#endif
+
         }
 
         //private void drawGUI()
@@ -291,9 +217,16 @@ namespace BOSS
                 }
                 if (Input.GetKeyDown(showGUIKey))
                 {
-                    showFullUI = !showFullUI;
-                    showUI = !showUI;
+                    // = !showFullUI;
+                    //showUI = !showUI;
+                    if (!showFullUI)
+                        toolbarControl.SetTrue(true);
+                    else
+                        toolbarControl.SetFalse(true);
+#if false
+                    toolbarButton.Visible
                     toolbarButton.TexturePath = showFullUI ? "BOSS/bon" : "BOSS/boff";
+#endif
                     saveSettings();
                 }
             }
@@ -716,7 +649,7 @@ namespace BOSS
             {
                 Debug.Log("Exception loading screenshotCount: " + e.Message);
             }
-
+#if false
             try
             {
                 showFullUI = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showFullUI"));
@@ -729,10 +662,12 @@ namespace BOSS
             {
                 showUI = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showUI"));
             }
+
             catch (Exception e)
             {
                 Debug.Log("Exception loading showUI: " + e.Message);
             }
+#endif
             try
             {
                 showBurst = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showBurst"));

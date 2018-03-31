@@ -1,37 +1,6 @@
 ﻿Bolt On Screenshot System
 ==
 
-ChangeLog for Continued version
-
-3.0.0	updated for 1.2
-		Moved config data into BOSS/PluginData
-		Changed config style from xml to cfg
-		Added ToolbarWrapper.cs
-		Added ability to use either standard toolbar or Blizzy toolbar
-		Changed screenshot save directory to standard screenshots directory
-3.0.1
-		Fixed issue reading config file, was causing Nullrefs
-
-3.0.2
-		Changed screenshot key to ALT+standard screenshot key
-		Fixed SuperSize code to properly check for file
-
-3.0.3
-		Added configurable screenshot key
-		Added checking for invalid values while loading from config file
-
-3.1.0
-		Updated for 1.3
-
-3.1.1
-		Updated for 1.3.1
-
-3.1.2
-	Updated for 1.4.1/1.4.2
-	Added support for the ClickThroughBlocker
-	Added support for ToolbarController
-	Added check for missing PluginData directory, creates it if not found
-
 
 ====== Following is from the old version ================
 
