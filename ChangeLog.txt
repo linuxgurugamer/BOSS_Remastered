@@ -33,3 +33,6 @@ ChangeLog for Continued version
 	Fixed BOSS window from opening up on main screen
 	Disabled using saved value for open window
 	Fixed toggle of button when "P" pressed
+
+3.1.1.4
+	Added dependency checking
