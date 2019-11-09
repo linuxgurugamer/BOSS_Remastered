@@ -242,7 +242,7 @@ namespace BOSS
         {
             if (Event.current.type == EventType.KeyDown && GUI.GetNameOfFocusedControl() == "burstinterval" &&
                 Event.current.keyCode != KeyCode.Backspace ||
-                Event.current.type == EventType.keyDown && GUI.GetNameOfFocusedControl() == "bursttime" &&
+                Event.current.type == EventType.KeyDown && GUI.GetNameOfFocusedControl() == "bursttime" &&
                 Event.current.keyCode != KeyCode.Backspace)
                 saveSettings();
 
@@ -310,7 +310,7 @@ namespace BOSS
 
             if (Event.current.type == EventType.KeyDown && GUI.GetNameOfFocusedControl() == "superSampleVal" &&
                 Event.current.keyCode != KeyCode.Backspace ||
-                Event.current.type == EventType.keyDown && GUI.GetNameOfFocusedControl() == "currentkey" &&
+                Event.current.type == EventType.KeyDown && GUI.GetNameOfFocusedControl() == "currentkey" &&
                 Event.current.keyCode != KeyCode.Backspace)
             {
                 invalidkey = false;
