@@ -40,9 +40,8 @@ namespace BOSS
     public class BOSS : MonoBehaviour
     {
         //Using this method to get the boss folder gives you a cleaner path to it. As the KSPUtils class gets paths that like this C:\KSP_Root\ksp_data\..\
-        private readonly string kspPluginDataFldr =
-            KSPUtil.ApplicationRootPath + "GameData/BOSS/PluginData/";
-        private readonly string screenshotDir = KSPUtil.ApplicationRootPath + "Screenshots/";
+        private string kspPluginDataFldr;
+        private string screenshotDir;
 
         //            System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"/PluginData/";
 
@@ -53,7 +52,7 @@ namespace BOSS
         public int screenshotCount, burstTime = 1, superSampleValueInt = 1;
         private double burstInterval = 1;
         private bool useToolbarIfAvailable = false;
-       // private IButton toolbarButton;
+        // private IButton toolbarButton;
         //private ApplicationLauncherButton AppLauncherButton;
         ToolbarControl toolbarControl = null;
 
@@ -92,19 +91,9 @@ namespace BOSS
 
         public void Awake()
         {
-#if false
-            if (!File.Exists(kspPluginDataFldr + "config.xml"))
-            {
-                try
-                {
-                    //createSettings();
-                }
-                catch
-                {
-                    throw new AccessViolationException("Can't create settings file, please confirm directory is writeable.");
-                }
-            }
-#endif
+            kspPluginDataFldr = KSPUtil.ApplicationRootPath + "GameData/BOSS/PluginData/";
+            screenshotDir = KSPUtil.ApplicationRootPath + "Screenshots/";
+
             helpContent = KSPConstants.getHelpText();
             loadSettings();
             // initToolbar();
@@ -128,8 +117,8 @@ namespace BOSS
                     _lastNonModKeyPressed = c;
             }
 
-//            if (toolbarButton == null && AppLauncherButton == null)
-                initToolbar();
+            //            if (toolbarButton == null && AppLauncherButton == null)
+            initToolbar();
         }
 
         private void initToolbar()
@@ -155,7 +144,7 @@ namespace BOSS
                     toolbarControl.UseBlizzy(useToolbarIfAvailable);
 
                 }
-                
+
             }
         }
         void ToggleMainWindow()
@@ -416,7 +405,7 @@ namespace BOSS
                 useToolbarIfAvailable = newuseToolbarIfAvailable;
                 uiSaveDelay = true;
                 UISave();
-               
+
             }
 
 
@@ -594,7 +583,8 @@ namespace BOSS
         {
             if (BOSSsettings.Load() == false)
                 createSettings();
-            try {
+            try
+            {
                 BurstPos.x = Convert.ToSingle(BOSSsettings.GetValue("BOSS::BurstPos.x"));
             }
             catch (Exception e)
