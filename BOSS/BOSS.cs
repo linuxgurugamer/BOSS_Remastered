@@ -219,7 +219,7 @@ namespace BOSS
                     saveSettings();
                 }
             }
-            catch (UnityException e)
+            catch //(UnityException e)
             //Catches the unity exception for a keycode that isnt a valid key. Updating the UI to let the user know.
             {
                 if (!invalidkey)

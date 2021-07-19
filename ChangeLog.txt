@@ -51,3 +51,7 @@ ChangeLog for Continued version
 
 3.1.2.1
 	Fixed initialization of vars
+
+3.1.2.2
+	Added AssemblyFileVersion
+	Updated version file for 1.12
