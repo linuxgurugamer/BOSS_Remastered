@@ -56,3 +56,6 @@ ChangeLog for Continued version
 	Added AssemblyFileVersion
 	Updated version file for 1.12
 	Renamed DLL for CKAN compatibility
+
+3.1.2.3
+	Fixed path for loading images (broken by new launcher)

@@ -178,52 +178,57 @@ namespace BOSS
             }
         }
 
+        double lastScreenshot = 0;
         public void Update()
         {
-            if (showBurst) //Set sampling to one always whenver burst mode is on to prevent crashing.
-            {
-                superSampleValueInt = 1;
-                superSampleValueString = "1";
-            }
-            try
+            if (Planetarium.GetUniversalTime() - lastScreenshot >= 0.25)
             {
 
-
-                if (buttonsEnabled && Input.GetKey(takeScreenshotKey) && (modifier == KeyCode.None || Input.GetKey(modifier)))
-                //                    Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt)))
-                //Input.GetKeyDown(screenshotKey))
+                if (showBurst) //Set sampling to one always whenver burst mode is on to prevent crashing.
                 {
-                    if (showBurst)
-                    {
-                        print("burst mode start");
-                        fireBurstShot();
-                    }
-                    else
-                    {
-                        print("Screenshot button pressed!");
-                        takeScreenshot();
-                    }
+                    superSampleValueInt = 1;
+                    superSampleValueString = "1";
                 }
-                if (Input.GetKeyDown(showGUIKey))
+                try
                 {
-                    // = !showFullUI;
-                    //showUI = !showUI;
-                    if (!showFullUI)
-                        toolbarControl.SetTrue(true);
-                    else
-                        toolbarControl.SetFalse(true);
+
+                    if (buttonsEnabled && Input.GetKey(takeScreenshotKey) && (modifier == KeyCode.None || Input.GetKey(modifier)))
+                    //                    Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt)))
+                    //Input.GetKeyDown(screenshotKey))
+                    {
+                        lastScreenshot = Planetarium.GetUniversalTime();   
+                        if (showBurst)
+                        {
+                            print("burst mode start");
+                            fireBurstShot();
+                        }
+                        else
+                        {
+                            print("Screenshot button pressed!");
+                            takeScreenshot();
+                        }
+                    }
+                    if (Input.GetKeyDown(showGUIKey))
+                    {
+                        // = !showFullUI;
+                        //showUI = !showUI;
+                        if (!showFullUI)
+                            toolbarControl.SetTrue(true);
+                        else
+                            toolbarControl.SetFalse(true);
 #if false
                     toolbarButton.Visible
                     toolbarButton.TexturePath = showFullUI ? "BOSS/bon" : "BOSS/boff";
 #endif
-                    saveSettings();
+                        saveSettings();
+                    }
                 }
-            }
-            catch //(UnityException e)
-            //Catches the unity exception for a keycode that isnt a valid key. Updating the UI to let the user know.
-            {
-                if (!invalidkey)
-                    invalidkey = true;
+                catch //(UnityException e)
+                      //Catches the unity exception for a keycode that isnt a valid key. Updating the UI to let the user know.
+                {
+                    if (!invalidkey)
+                        invalidkey = true;
+                }
             }
         }
 

@@ -35,8 +35,8 @@ namespace BOSS
 
         public bool Load()
         {
-            if (!Directory.Exists("GameData/BOSS/PluginData"))
-                Directory.CreateDirectory("GameData/BOSS/PluginData");
+            if (!Directory.Exists(KSPUtil.ApplicationRootPath + "GameData/BOSS/PluginData"))
+                Directory.CreateDirectory(KSPUtil.ApplicationRootPath + "GameData/BOSS/PluginData");
             configFile = ConfigNode.Load(KSPUtil.ApplicationRootPath + "GameData/BOSS/PluginData/BOSS.cfg");
             if (configFile != null)
                 configFileNode = configFile.GetNode("BOSS");
@@ -46,8 +46,8 @@ namespace BOSS
 
         public void Save()
         {
-            if (!Directory.Exists("GameData/BOSS/PluginData"))
-                Directory.CreateDirectory("GameData/BOSS/PluginData");
+            if (!Directory.Exists(KSPUtil.ApplicationRootPath + "GameData/BOSS/PluginData"))
+                Directory.CreateDirectory(KSPUtil.ApplicationRootPath + "GameData/BOSS/PluginData");
 
             configFile.Save(KSPUtil.ApplicationRootPath + "GameData/BOSS/PluginData/BOSS.cfg");
             //pluginsettings.save();
