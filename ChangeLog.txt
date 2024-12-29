@@ -59,3 +59,7 @@ ChangeLog for Continued version
 
 3.1.2.3
 	Fixed path for loading images (broken by new launcher)
+
+3.1.2.4
+	Updated version file to use github for new version info
+	Copied web page to README-WEB.md
