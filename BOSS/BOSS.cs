@@ -402,7 +402,7 @@ namespace BOSS
             }
 
 
-            bool newuseToolbarIfAvailable = GUILayout.Toggle(useToolbarIfAvailable, "Use Toolbar", GUILayout.ExpandWidth(true));
+            bool newuseToolbarIfAvailable = GUILayout.Toggle(useToolbarIfAvailable, "Use Blizzy Toolbar", GUILayout.ExpandWidth(true));
             if (newuseToolbarIfAvailable != useToolbarIfAvailable)
             //&& Event.current.type == EventType.Repaint &&
             //GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition) && !uiSaveDelay)
