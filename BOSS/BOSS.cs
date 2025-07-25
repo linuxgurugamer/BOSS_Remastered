@@ -208,7 +208,7 @@ namespace BOSS
                             takeScreenshot();
                         }
                     }
-                    if (Input.GetKeyDown(showGUIKey))
+                    if (!HighLogic.CurrentGame.Parameters.CustomParams<StockSettings>().disableUI && Input.GetKeyDown(showGUIKey))
                     {
                         // = !showFullUI;
                         //showUI = !showUI;
@@ -663,6 +663,7 @@ namespace BOSS
                 Debug.Log("Exception loading showUI: " + e.Message);
             }
 #endif
+
             try
             {
                 showBurst = Convert.ToBoolean(BOSSsettings.GetValue("BOSS::showBurst"));

@@ -63,3 +63,7 @@ ChangeLog for Continued version
 3.1.2.4
 	Updated version file to use github for new version info
 	Copied web page to README-WEB.md
+
+3.1.2.5 
+	Added a stock settings page:
+		Added ability to disable the UI

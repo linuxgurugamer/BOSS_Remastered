@@ -45,6 +45,7 @@
     <Compile Include="KSPConstants.cs" />
     <Compile Include="pluginSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BOSS.cs">
