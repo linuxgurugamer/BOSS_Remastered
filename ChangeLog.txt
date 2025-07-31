@@ -67,3 +67,7 @@ ChangeLog for Continued version
 3.1.2.5 
 	Added a stock settings page:
 		Added ability to disable the UI
+
+3.1.2.6
+	Thanks to github user @Clayell for this:
+		Make it more clear that the toolbar button is referring to blizzy
